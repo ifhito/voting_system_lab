@@ -53,6 +53,8 @@ function addDnDHandlers(elem) {
 }
 
 function PageLoad() {
-  var cols = document.querySelectorAll('#columns .column');
-  [].forEach.call(cols, addDnDHandlers);
+  var cols1 = document.querySelectorAll('#columns1 .column');
+  var cols2 = document.querySelectorAll('#columns2 .column');
+  [].forEach.call(cols1, addDnDHandlers);
+  [].forEach.call(cols2, addDnDHandlers);
 }
