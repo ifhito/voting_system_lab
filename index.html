@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hello!</title>
+    <title>Login</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,21 @@
     <script defer src="/__/firebase/6.0.2/firebase-app.js"></script>
     <script defer src="/__/firebase/6.0.2/firebase-auth.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: 'AIzaSyCW_Zgmt2vkpAsUbV4Ksf6dmhtLms58ubM',
+        authDomain: 'fir-test1-1e20d.firebaseapp.com',
+        databaseURL: 'https://fir-test1-1e20d.firebaseio.com/',
+        storageBucket: 'gs://fir-test1-1e20d.appspot.com',
+        projectId: "fir-test1-1e20d",
+        messagingSenderId: "959974201771"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
   </head>  
   
   <body>
@@ -34,23 +49,12 @@
     <script src="https://button.glitch.me/button.js"></script>
     -->
     
+    <!--
     <p>Hello, Firebase Hosting!</p>
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
+    -->
     
-    <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: 'AIzaSyCW_Zgmt2vkpAsUbV4Ksf6dmhtLms58ubM',
-        authDomain: 'fir-test1-1e20d.firebaseapp.com',
-        databaseURL: 'https://fir-test1-1e20d.firebaseio.com/',
-        storageBucket: 'gs://fir-test1-1e20d.appspot.com',
-        projectId: "fir-test1-1e20d",
-        messagingSenderId: "959974201771"
-      };
-      firebase.initializeApp(config);
-    </script>
     
     <script type="text/javascript">
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -73,5 +77,37 @@
       ui.start('#firebaseui-auth-container', uiConfig);
     </script>
 
+    
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/6.0.4/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#reserved-urls -->
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCW_Zgmt2vkpAsUbV4Ksf6dmhtLms58ubM",
+        authDomain: "fir-test1-1e20d.firebaseapp.com",
+        databaseURL: "https://fir-test1-1e20d.firebaseio.com",
+        projectId: "fir-test1-1e20d",
+        storageBucket: "fir-test1-1e20d.appspot.com",
+        messagingSenderId: "959974201771",
+        appId: "1:959974201771:web:643559588a4000bf"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    
   </body>
 </html>
