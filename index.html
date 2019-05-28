@@ -5,16 +5,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
-    
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
     
-    <script defer src="/__/firebase/6.0.2/firebase-app.js"></script>
-    <script defer src="/__/firebase/6.0.2/firebase-auth.js"></script>
     
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCW_Zgmt2vkpAsUbV4Ksf6dmhtLms58ubM",
+        authDomain: "fir-test1-1e20d.firebaseapp.com",
+        databaseURL: "https://fir-test1-1e20d.firebaseio.com",
+        projectId: "fir-test1-1e20d",
+        storageBucket: "fir-test1-1e20d.appspot.com",
+        messagingSenderId: "959974201771",
+        appId: "1:959974201771:web:643559588a4000bf"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
   </head>  
   
   <body>
@@ -40,59 +56,7 @@
     <div id="loader">Loading...</div>
     -->
     
-    
-    <script type="text/javascript">
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-      var uiConfig = {
-        callbacks: {
-          signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-            return true;
-          },
-          uiShown: function() {
-            document.getElementById('loader').style.display = 'none';
-          }
-        },
-        signInFlow: 'popup',
-        signInSuccessUrl: './success.html',
-        signInOptions: [
-          firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        ],
-      };
-      ui.start('#firebaseui-auth-container', uiConfig);
-    </script>
-
-    
-    
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/6.0.4/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#reserved-urls -->
-
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
-    
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
-
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyCW_Zgmt2vkpAsUbV4Ksf6dmhtLms58ubM",
-        authDomain: "fir-test1-1e20d.firebaseapp.com",
-        databaseURL: "https://fir-test1-1e20d.firebaseio.com",
-        projectId: "fir-test1-1e20d",
-        storageBucket: "fir-test1-1e20d.appspot.com",
-        messagingSenderId: "959974201771",
-        appId: "1:959974201771:web:643559588a4000bf"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-    </script>
+    <div id="firebaseui-auth-container"></div>
     
   </body>
 </html>
