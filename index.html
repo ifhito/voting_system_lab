@@ -11,19 +11,6 @@
     
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
-  </head>  
-  <body>
-    <h1>Hi there!</h1>
-    
-    <p>
-      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
-
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
-    
     <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -37,5 +24,50 @@
       };
       firebase.initializeApp(config);
     </script>
+    
+      <script type="text/javascript">
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        var uiConfig = {
+          callbacks: {
+            signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+              return true;
+            },
+            uiShown: function() {
+              document.getElementById('loader').style.display = 'none';
+            }
+          },
+          signInFlow: 'popup',
+          signInSuccessUrl: './success.html',
+          signInOptions: [
+            firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          ],
+        };
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+  </head>  
+  
+  <body>
+    
+    <!--
+    <h1>Hi there!</h1>
+    
+    <p>
+      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
+    </p>
+    -->
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <!--
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+    -->
+    
+    <p>Hello, Firebase Hosting!</p>
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+
+    
   </body>
 </html>
