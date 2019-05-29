@@ -1,30 +1,34 @@
 .wrapper {
   width: 620px;
-  padding: 10px;
+  padding: 5px;
   background-color: #ccc;
   margin: 0 auto;
 }
 
 .title {
-  background-color: blue;
+  background-color: white;
+  margin-bottom: 5px;
 }
 
 .P_box, .FG_box {
-  background-color: red;
-  height: 500px;
+  background-color: grey;
+  height: 400px;
+  
 }
 
 .P_box {
-  width: 50%;
   float: left;
+  width: 50%
 }
 
 .FG_box {
-  width: 50%;
   float: right;
+  width: 50%;
 }
 
 .member {
   clear: both;
-  background-color: blue;
+  background-color: white;
+  height: 100px;
+  margin-top: 5px;
 }
