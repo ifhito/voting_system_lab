@@ -38,9 +38,9 @@
 .column {
   -webkit-flex-direction: row;
   flex-direction: row;
-  height: 50px;
-  width: 150px;
-  line-height: 50px;
+  height: 30px;
+  width: 70px;
+  line-height: 30px;
   border: 2px solid #000;
   background-color: #ccc;
   margin: 5px;
@@ -55,4 +55,5 @@
   */
   text-align: center;
   cursor: move;
+  display:inline-block;
 }
