@@ -9,9 +9,12 @@
   <body onload="PageLoad();">
     <div class="wrapper">
       <div class="title">投票画面</div>
-      <div class="P_box">P</div>
-      <div class="FG_box">FG</div>
-      <div class="member">メンバー</div>
+      <div class="P_box" ondragover="f_dragover(event)" ondrop="f_drop(event)">P</div>
+      <div class="FG_box" ondragover="f_dragover(event)" ondrop="f_drop(event)">FG</div>
+      <div class="member" ondragover="f_dragover(event)" ondrop="f_drop(event)"></div>
+        <div class="column" id="seki" draggable="true" ondragstart="f_dragstart(event)">関</div>
+        <div class="column" id="chou" draggable="true" ondragstart="f_dragstart(event)">張</div>
+        <div class="column" id="kase" draggable="true" ondragstart="f_dragstart(event)">加瀬</div>
     </div>
   
     <script type="text/javascript" src="vote_script.js"></script>
