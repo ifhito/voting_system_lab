@@ -8,27 +8,29 @@
 .title {
   background-color: white;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .P_box, .FG_box {
   background-color: grey;
   height: 400px;
-  
+  margin-bottom: 5px;
+  -khtml-user-drag: element;
 }
 
 .P_box {
   float: left;
-  width: 50%
+  width: 49%;
 }
 
 .FG_box {
   float: right;
-  width: 50%;
+  width: 49%;
 }
 
 .member {
   clear: both;
   background-color: white;
   height: 100px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
