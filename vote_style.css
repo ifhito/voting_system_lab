@@ -11,21 +11,26 @@
   text-align: center;
 }
 
-.P_box, .FG_box {
+.P_box, .FG_box, .rank {
   background-color: grey;
   height: 400px;
   margin-bottom: 5px;
   -khtml-user-drag: element;
+  float: left;
 }
 
 .P_box {
-  float: left;
-  width: 49%;
+  width: 39%;
+  margin-right: 5px;
 }
 
 .FG_box {
-  float: right;
-  width: 49%;
+  width: 39%;
+}
+
+.rank {
+  width: 9%;
+  margin-right: 5px;
 }
 
 .member {
@@ -55,5 +60,4 @@
   */
   text-align: center;
   cursor: move;
-  display:inline-block;
 }
