@@ -1,25 +1,30 @@
-div {
-  border: solid 8px red;
-  box-sizing: border-box;
-
-  text-align: center;
-  line-height: 100px;
-  font-weight: bold;
-  font-size: 60px;
+.wrapper {
+  width: 620px;
+  padding: 10px;
+  background-color: #ccc;
+  margin: 0 auto;
 }
 
 .title {
-  
+  background-color: blue;
+}
+
+.P_box, .FG_box {
+  background-color: red;
+  height: 500px;
 }
 
 .P_box {
-  
+  width: 50%;
+  float: left;
 }
 
 .FG_box {
-  
+  width: 50%;
+  float: right;
 }
 
 .member {
-  
+  clear: both;
+  background-color: blue;
 }
