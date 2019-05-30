@@ -6,7 +6,7 @@
 }
 
 .title {
-  background-color: white;
+  background-color: #FFCCCC;
   margin-bottom: 5px;
   text-align: center;
 }
@@ -19,20 +19,20 @@
 }
 
 .P_box {
-  background-color: white;
+  background-color: #EEFFFF;
   width: 39%;
   margin-right: 3px;
-  border: solid 1px;
+  border: solid 1px #0099FF;
 }
 
 .FG_box {
-  background-color: white;
+  background-color: #EEFFFF;
   width: 39%;
-  border: solid 1px;
+  border: solid 1px #0099FF;
 }
 
 .rank {
-  background-color: grey;
+  background-color: #FFFFCC;
   width: 10%;
   margin-right: 2px;
 }
