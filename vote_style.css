@@ -1,5 +1,5 @@
 .wrapper {
-  width: 620px;
+  width: 400px;
   padding: 5px;
   background-color: #ccc;
   margin: 0 auto;
@@ -22,7 +22,7 @@
 
 .pbox_title {
   background-color: #EEFFFF;
-  width: 39%;
+  width: 38%;
   margin-bottom: 5px;
   margin-right: 3px;
   border: solid 1px #0099FF;
@@ -32,7 +32,7 @@
 
 .fgbox_title {
   background-color: #EEFFFF;
-  width: 39%;
+  width: 38%;
   margin-bottom: 5px;
   border: solid 1px #0099FF;
   float: left;
@@ -40,8 +40,8 @@
 }
 
 
-.P_box, .FG_box, .rank {
-  height: 400px;
+.P_box, .FG_box, .rank{
+  height: 300px;
   margin-bottom: 5px;
   -khtml-user-drag: element;
   float: left;
@@ -49,16 +49,17 @@
 
 .P_box {
   background-color: #EEFFFF;
-  width: 39%;
-  margin-right: 3px;
+  width: 38%;
+  margin-right: 2px;
   border: solid 1px #0099FF;
   display: block;
 }
 
 .FG_box {
   background-color: #EEFFFF;
-  width: 39%;
+  width: 38%;
   border: solid 1px #0099FF;
+  margin-left: 2px;
   display: block;
 }
 
@@ -72,7 +73,7 @@
 .member {
   clear: both;
   background-color: white;
-  height: 100px;
+  height: 150px;
   width: 100%;
   margin-top: 10px;
 }
