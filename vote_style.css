@@ -11,6 +11,30 @@
   text-align: center;
 }
 
+.rank_title {
+  background-color: #FFFFCC;
+  width: 10%;
+  margin-bottom: 5px;
+  margin-right: 2px;
+  float: left;
+}
+
+.pbox_title {
+  background-color: #EEFFFF;
+  width: 39%;
+  margin-bottom: 5px;
+  margin-right: 3px;
+  float: left;
+}
+
+.fgbox_title {
+  background-color: #EEFFFF;
+  width: 39%;
+  margin-bottom: 5px;
+  float: left;
+}
+
+
 .P_box, .FG_box, .rank {
   height: 400px;
   margin-bottom: 5px;
@@ -44,6 +68,7 @@
   margin-top: 10px;
 }
 
+
 .column {
   -webkit-flex-direction: row;
   flex-direction: row;
@@ -69,6 +94,7 @@
 .rank_num {
   height: 30px;
 }
+
 
 #submit_vote {
   margin-top: 10px;
