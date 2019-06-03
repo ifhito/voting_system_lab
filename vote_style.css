@@ -52,12 +52,14 @@
   width: 39%;
   margin-right: 3px;
   border: solid 1px #0099FF;
+  display: block;
 }
 
 .FG_box {
   background-color: #EEFFFF;
   width: 39%;
   border: solid 1px #0099FF;
+  display: block;
 }
 
 .rank {
@@ -72,6 +74,7 @@
   background-color: white;
   height: 100px;
   margin-top: 10px;
+  display: inline-block;;
 }
 
 
