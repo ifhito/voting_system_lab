@@ -66,6 +66,10 @@
   cursor: move;
 }
 
+.rank_num {
+  height: 30px;
+}
+
 #submit_vote {
   margin-top: 10px;
   float: right;
