@@ -11,9 +11,7 @@ function f_dragover(event){
 }
 
 /***** ドロップ時の処理 *****/
-function f_drop(event){
-  p_elem_find();
-  
+function f_drop(event){  
   //ドラッグされたデータのid名をDataTransferオブジェクトから取得
   var id_name = event.dataTransfer.getData("text");
   //id名からドラッグされた要素を取得
@@ -24,7 +22,7 @@ function f_drop(event){
   event.preventDefault();
 }
 
-function p_elem_find(){
-  var p_elem = document.getElementsByClassName();
+function submit(){
+  var p_elem = document.getElementsByClassName("P_box");
   console.log(p_elem)
 }
