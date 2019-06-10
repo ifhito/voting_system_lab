@@ -25,7 +25,7 @@ function f_drop(event){
 function submit(){
   //var p_elem = document.getElementsByClassName("P_box");
   //console.log(p_elem)
-  var p_1 = document.getElementsByClassName("p_1");
+  var p_1 = document.getElementsById("p_1").value;
   var p_2 = document.getElementsByClassName("p_2");
   var p_3 = document.getElementsByClassName("p_3");
   var p_4 = document.getElementsByClassName("p_4");
@@ -36,10 +36,7 @@ function submit(){
   
   var list = ['小山','持田','姚','加瀬','関','張','前本','池田','坂元','荻野'];
   
-  if(list.indexOf(p_1) == -1 || list.indexOf(p_2) == -1 ||
-    list.indexOf(p_3) == -1 || list.indexOf(p_4) == -1 ||
-    list.indexOf(fg_1) == -1 || list.indexOf(fg_2) == -1 ||
-    list.indexOf(fg_3) == -1 || list.indexOf(fg_4) == -1){
+  if(list.indexOf(p_1) == -1){
     alert("リストに存在しない名前です。");
     return false;
   }else{
