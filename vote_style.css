@@ -61,6 +61,7 @@
   width: 26%;
   margin-left: 3px;
   border: solid 1px #0099FF;
+  display: block;
 }
 
 .fg_explain {
@@ -75,6 +76,8 @@
   width: 26%;
   margin-left: 3px;
   border: solid 1px #0099FF;
+  display: block;
+  margin: 0 auto;
 }
 
 
