@@ -61,7 +61,6 @@
   width: 26%;
   margin-left: 3px;
   border: solid 1px #0099FF;
-  display: block;
 }
 
 .fg_explain {
@@ -76,8 +75,21 @@
   width: 26%;
   margin-left: 3px;
   border: solid 1px #0099FF;
-  display: block;
-  margin: 0 auto;
+}
+
+
+.rank_num {
+  margin-top: 22px;
+  margin-bottom: 22px;
+  width: 20%;
+  float: left;
+}
+
+.form {
+  margin-top: 22px;
+  margin-bottom: 22px;
+  width: 60%;
+  float: left;
 }
 
 
@@ -119,12 +131,6 @@
 div.column {
   float: left;
 }
-
-.rank_num {
-  margin-top: 22px;
-  margin-bottom: 22px;
-}
-
 
 #submit_vote {
   margin-top: 10px;
