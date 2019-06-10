@@ -12,9 +12,9 @@
   text-align: center;
 }
 
-.pbox_title {
+.p_title {
   background-color: #EEFFFF;
-  width: 49%;
+  width: 69%;
   margin-bottom: 5px;
   margin-right: 8px;
   border: solid 1px #0099FF;
@@ -22,15 +22,23 @@
   text-align: center;
 }
 
-.fgbox_title {
+.fg_title {
   background-color: #EEFFFF;
-  width: 49%;
+  width: 69%;
   margin-bottom: 5px;
   border: solid 1px #0099FF;
   float: left;
   text-align: center;
 }
 
+.vote {
+  background-color: #EEFFFF;
+  width: 29%;
+  margin-bottom: 5px;
+  border: solid 1px #0099FF;
+  float: left;
+  text-align: center;
+}
 
 .p_explain, .p_vote, .fg_explain, .fg_vote {
   height: 300px;
@@ -41,30 +49,31 @@
 
 .p_explain {
   background-color: #EEFFFF;
-  width: 39%;
+  width: 69%;
   margin-right: 4px;
   border: solid 1px #0099FF;
 }
 
 .p_vote {
   background-color: #FFFFCC;
-  width: 10%;
+  width: 29%;
   margin-right: 4px;
 }
 
 .fg_explain {
   background-color: #EEFFFF;
-  width: 39%;
+  width: 69%;
   border: solid 1px #0099FF;
   display: block;
 }
 
 .fg_vote {
   background-color: #FFFFCC;
-  width: 10%;
+  width: 29%;
   margin-right: 3px;
   text-align: center;
 }
+
 
 .member {
   clear: both;
