@@ -45,35 +45,35 @@
   height: 300px;
   margin-bottom: 5px;
   -khtml-user-drag: element;
-  opacity: 0.5;
+  padding: 10px;
   float: left;
 }
 
 .p_explain {
-  background-color: #FFCCCC;
-  width: 69%;
+  background-color: #FFE5F2;
+  width: 66%;
   margin-right: 8px;
   border: solid 1px #0099FF;
 }
 
 .p_vote {
-  background-color: #FFFFCC;
-  width: 29%;
-  margin-right: 2px;
+  background-color: #FFFFD6;
+  width: 27%;
+  margin-left: 5px;
   border: solid 1px #0099FF;
 }
 
 .fg_explain {
-  background-color: #90EE90;
-  width: 69%;
+  background-color: #DBFFDB;
+  width: 66%;
   margin-right: 8px;
   border: solid 1px #0099FF;
 }
 
 .fg_vote {
-  background-color: #FFFFCC;
-  width: 29%;
-  margin-right: 2px;
+  background-color: #FFFFD6;
+  width: 26%;
+  margin-left: 5px;
   border: solid 1px #0099FF;
 }
 
