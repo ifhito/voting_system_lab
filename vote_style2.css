@@ -11,10 +11,18 @@
   text-align: center;
 }
 
+.rank_title {
+  background-color: #FFFFCC;
+  width: 10%;
+  margin-bottom: 5px;
+  margin-right: 3px;
+  float: left;
+  text-align: center;
+}
 
 .pbox_title {
   background-color: #EEFFFF;
-  width: 49%;
+  width: 38%;
   margin-bottom: 5px;
   margin-right: 4px;
   border: solid 1px #0099FF;
@@ -24,7 +32,7 @@
 
 .fgbox_title {
   background-color: #EEFFFF;
-  width: 49%;
+  width: 38%;
   margin-bottom: 5px;
   border: solid 1px #0099FF;
   float: left;
