@@ -1,16 +1,16 @@
 .wrapper {
-  width: 400px;
+  width: 600px;
   padding: 5px;
   background-color: #ccc;
   margin: 0 auto;
 }
+
 
 .title {
   background-color: #FFCCCC;
   margin-bottom: 5px;
   text-align: center;
 }
-
 
 .pbox_title {
   background-color: #EEFFFF;
@@ -32,29 +32,33 @@
 }
 
 
-.P_box, .FG_box, .rank{
-  height: 270px;
+.P_explain, .P_vote, .FG_explain, .FG_vote {
+  height: 300px;
   margin-bottom: 5px;
   -khtml-user-drag: element;
   float: left;
 }
 
-.P_box {
+.P_explain {
   background-color: #EEFFFF;
-  width: 38%;
+  width: 39%;
   margin-right: 4px;
   border: solid 1px #0099FF;
-  display: block;
 }
 
-.FG_box {
+.P_vote {
+  background-color: #FFFFCC;
+  width: 10%;
+}
+
+.FG_explain {
   background-color: #EEFFFF;
-  width: 38%;
+  width: 39%;
   border: solid 1px #0099FF;
   display: block;
 }
 
-.rank {
+.FG_vote {
   background-color: #FFFFCC;
   width: 10%;
   margin-right: 3px;
