@@ -14,7 +14,7 @@
 
 .p_title {
   background-color: #FFCCCC;
-  width: 69%;
+  width: 70%;
   margin-bottom: 5px;
   margin-right: 8px;
   /*border: solid 1px #0099FF;*/
@@ -24,7 +24,7 @@
 
 .fg_title {
   background-color: #90EE90;
-  width: 69%;
+  width: 70%;
   margin-bottom: 5px;
   margin-right: 8px;
   /*border: solid 1px #0099FF;*/
@@ -51,29 +51,29 @@
 
 .p_explain {
   background-color: #FFE5F2;
-  width: 67%;
+  width: 67.5%;
   margin-right: 8px;
   /*border: solid 1px #0099FF;*/
 }
 
 .p_vote {
   background-color: #FFFFD6;
-  width: 29%;
-  margin-left: 3px;
+  width: 26.5%;
+  /*margin-left: 3px;*/
   /*border: solid 1px #0099FF;*/
 }
 
 .fg_explain {
   background-color: #DBFFDB;
-  width: 66%;
+  width: 67.5%;
   margin-right: 8px;
   /*border: solid 1px #0099FF;*/
 }
 
 .fg_vote {
   background-color: #FFFFD6;
-  width: 26%;
-  margin-left: 3px;
+  width: 26.5%;
+  /*margin-left: 3px;*/
   /*border: solid 1px #0099FF;*/
   margin: 0 auto;
 }
