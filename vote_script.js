@@ -23,6 +23,8 @@ function f_drop(event){
 }
 
 function submit(){
-  var p_elem = document.getElementsByClassName("P_box");
-  console.log(p_elem)
+  //var p_elem = document.getElementsByClassName("P_box");
+  //console.log(p_elem)
+  var p_1 = document.getElementsByClassName("P_box")
+  if()
 }
