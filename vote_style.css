@@ -58,8 +58,8 @@
 
 .p_vote {
   background-color: #FFFFD6;
-  width: 27%;
-  margin-left: 5px;
+  width: 26%;
+  margin-left: 3px;
   border: solid 1px #0099FF;
 }
 
@@ -73,7 +73,7 @@
 .fg_vote {
   background-color: #FFFFD6;
   width: 26%;
-  margin-left: 5px;
+  margin-left: 3px;
   border: solid 1px #0099FF;
 }
 
