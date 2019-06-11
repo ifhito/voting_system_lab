@@ -42,7 +42,7 @@
 }
 
 .p_explain, .p_vote, .fg_explain, .fg_vote {
-  height: 200px;
+  height: 220px;
   margin-bottom: 5px;
   -khtml-user-drag: element;
   padding: 10px;
@@ -80,10 +80,16 @@
 
 
 .rank_num {
-  margin-top: 15px;
-  margin-bottom: 25px;
+  margin-top: 5px;
+  margin-bottom: 20px;
   margin-left: 5px;
 }
+
+li{
+  margin-bottom: 8px;
+  margin-left: 5px;
+}
+
 
 .member {
   clear: both;
