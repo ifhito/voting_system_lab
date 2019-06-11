@@ -8,6 +8,7 @@
 
 .title {
   background-color: #00BFFF;
+  margin-top: 30px;
   margin-bottom: 5px;
   text-align: center;
 }
@@ -86,8 +87,9 @@
 }
 
 li{
+  margin-top: 5px;
   margin-bottom: 8px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 
