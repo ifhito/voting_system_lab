@@ -42,7 +42,7 @@
 }
 
 .p_explain, .p_vote, .fg_explain, .fg_vote {
-  height: 300px;
+  height: 200px;
   margin-bottom: 5px;
   -khtml-user-drag: element;
   padding: 10px;
