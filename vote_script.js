@@ -25,14 +25,14 @@ function f_drop(event){
 function submit(){
   //var p_elem = document.getElementsByClassName("P_box");
   //console.log(p_elem)
-  var p_1 = document.getElementsById("p_1").value;
-  var p_2 = document.getElementsByClassName("p_2");
-  var p_3 = document.getElementsByClassName("p_3");
-  var p_4 = document.getElementsByClassName("p_4");
-  var fg_1 = document.getElementsByClassName("fg_1");
-  var fg_2 = document.getElementsByClassName("fg_2");
-  var fg_3 = document.getElementsByClassName("fg_3");
-  var fg_4 = document.getElementsByClassName("fg_4");
+  var p_1 = document.getElementById("p_1").textContent;
+  var p_2 = document.getElementById("p_2").textContent;
+  var p_3 = document.getElementById("p_3").textContent;
+  var p_4 = document.getElementById("p_4").textContent;
+  var fg_1 = document.getElementById("fg_1").textContent;
+  var fg_2 = document.getElementById("fg_2").textContent;
+  var fg_3 = document.getElementById("fg_3").textContent;
+  var fg_4 = document.getElementById("fg_4").textContent;
   
   var list = ['小山','持田','姚','加瀬','関','張','前本','池田','坂元','荻野'];
     
