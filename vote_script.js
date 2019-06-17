@@ -36,13 +36,12 @@ function submit(){
   
   var list = ['小山','持田','姚','加瀬','関','張','前本','池田','坂元','荻野'];
     
-  //if(list.indexOf(p_1) == -1){
+  console.log(p_1);
   if(p_1 == "加瀬"){
-    alert("リストに存在しない名前です。");
-    return false;
-  }else{
-    console.log(p_1);
     document.send.elements[0].disabled = false;
     return true;
+  }else{
+    alert(p_1);
+    return false;
   }
 }
