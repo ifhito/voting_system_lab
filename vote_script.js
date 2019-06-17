@@ -35,12 +35,14 @@ function submit(){
   var fg_4 = document.getElementsByClassName("fg_4");
   
   var list = ['小山','持田','姚','加瀬','関','張','前本','池田','坂元','荻野'];
-  
-  if(list.indexOf(p_1) == -1){
+    
+  //if(list.indexOf(p_1) == -1){
+  if(p_1 == "加瀬"){
     alert("リストに存在しない名前です。");
     return false;
   }else{
-    alert("OKです。");
+    console.log(p_1);
+    document.send.elements[0].disabled = false;
     return true;
   }
 }

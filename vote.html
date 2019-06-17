@@ -23,7 +23,7 @@
       </div>
       <div class="p_vote">
         <div class="rank_num">1位
-          <input class="p_1" type="text" maxlength="10">
+          <input class="p_1" type="text" maxlength="10" onchange="submit()">
         </div>
         <div class="rank_num">2位
           <input class="p_2" type="text" maxlength="10">
@@ -64,7 +64,7 @@
       </div>
             
       <form name="send">
-        <input type="button" value="送信">
+        <input type="button" value="送信" disabled>
       </form>
       <!--
       <button id="submit_vote" onclick="submit()">投票</button>
