@@ -36,3 +36,115 @@ function submit_p1(){
     document.send.elements[0].disabled = false;
   }
 }
+
+function submit_p2(){
+  var p_1 = document.getElementById("p_1").value;
+      
+  if(list.indexOf(p_1) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(flag == 8){
+    document.send.elements[0].disabled = false;
+  }
+}
+
+function submit_p3(){
+  var p_1 = document.getElementById("p_1").value;
+      
+  if(list.indexOf(p_1) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(flag == 8){
+    document.send.elements[0].disabled = false;
+  }
+}
+
+function submit_p4(){
+  var p_1 = document.getElementById("p_1").value;
+      
+  if(list.indexOf(p_1) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(flag == 8){
+    document.send.elements[0].disabled = false;
+  }
+}
+
+function submit_fg1(){
+  var p_1 = document.getElementById("p_1").value;
+      
+  if(list.indexOf(p_1) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(flag == 8){
+    document.send.elements[0].disabled = false;
+  }
+}
+
+function submit_fg2(){
+  var p_1 = document.getElementById("p_1").value;
+      
+  if(list.indexOf(p_1) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(flag == 8){
+    document.send.elements[0].disabled = false;
+  }
+}
+
+function submit_fg3(){
+  var p_1 = document.getElementById("p_1").value;
+      
+  if(list.indexOf(p_1) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(flag == 8){
+    document.send.elements[0].disabled = false;
+  }
+}
+
+function submit_fg4(){
+  var p_1 = document.getElementById("p_1").value;
+      
+  if(list.indexOf(p_1) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(flag == 8){
+    document.send.elements[0].disabled = false;
+  }
+}
