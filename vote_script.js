@@ -25,7 +25,7 @@ function f_drop(event){
 function submit(){
   //var p_elem = document.getElementsByClassName("P_box");
   //console.log(p_elem)
-  var p_1 = document.getElementById("p_1").textContent;
+  var p_1 = document.getElementById("p_1").value;
   var p_2 = document.getElementById("p_2").textContent;
   var p_3 = document.getElementById("p_3").textContent;
   var p_4 = document.getElementById("p_4").textContent;
@@ -37,7 +37,7 @@ function submit(){
   var list = ['小山','持田','姚','加瀬','関','張','前本','池田','坂元','荻野'];
     
   console.log(p_1);
-  if(p_1 == "加瀬"){
+  if(list.indexOf(p_1) >= 0){
     document.send.elements[0].disabled = false;
     return true;
   }else{
