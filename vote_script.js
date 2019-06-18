@@ -1,26 +1,4 @@
-/***** ドラッグ開始時の処理 *****/
-function f_dragstart(event){
-  //ドラッグするデータのid名をDataTransferオブジェクトにセット
-  event.dataTransfer.setData("text", event.target.id);
-}
-
-/***** ドラッグ要素がドロップ要素に重なっている間の処理 *****/
-function f_dragover(event){
-  //dragoverイベントをキャンセルして、ドロップ先の要素がドロップを受け付けるようにする
-  event.preventDefault();
-}
-
-/***** ドロップ時の処理 *****/
-function f_drop(event){  
-  //ドラッグされたデータのid名をDataTransferオブジェクトから取得
-  var id_name = event.dataTransfer.getData("text");
-  //id名からドラッグされた要素を取得
-  var drag_elm =document.getElementById(id_name);
-  //ドロップ先にドラッグされた要素を追加
-  event.currentTarget.appendChild(drag_elm);
-  //エラー回避のため、ドロップ処理の最後にdropイベントをキャンセルしておく
-  event.preventDefault();
-}
+var flag = 0;
 
 function submit(){
   //var p_elem = document.getElementsByClassName("P_box");
@@ -34,19 +12,84 @@ function submit(){
   var fg_3 = document.getElementById("fg_3").value;
   var fg_4 = document.getElementById("fg_4").value;
   
-  var list = ['小山','koyama','こやま',
+  var list = ['ghita','ギータ','ぎーた',
+              '小山','koyama','こやま',
               '持田','mochida','もちだ',
               '姚','you','よう',
               '加瀬','kase','かせ',
               '関','seki','せき',
               '張','chou','ちょう',
-              '前本','池田','坂元','荻野'];
+              '前本','maemoto','まえもと',
+              '池田','ikeda','いけだ',
+              '坂元','sakamoto','さかもと',
+              '荻野','ogino','おぎの'];
     
+  
   if(list.indexOf(p_1) >= 0){
-    document.send.elements[0].disabled = false;
+    flag += 1;
     return true;
   }else{
-    alert(p_1);
+    alert(p_1 + 'はリストに存在しません.');
     return false;
+  }
+  
+  if(list.indexOf(p_2) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(list.indexOf(p_3) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(list.indexOf(p_4) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(list.indexOf(fg_1) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(list.indexOf(fg_2) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(list.indexOf(fg_3) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(list.indexOf(fg_4) >= 0){
+    flag += 1;
+    return true;
+  }else{
+    alert(p_1 + 'はリストに存在しません.');
+    return false;
+  }
+  
+  if(flag == 8){
+    document.send.elements[0].disabled = false;
   }
 }
