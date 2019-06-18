@@ -8,6 +8,9 @@
 
 .title {
   background-color: #00BFFF;
+  height: 40px;
+  font-size: 20pt;
+  color: #FFFFFF;
   margin-top: 30px;
   margin-bottom: 5px;
   text-align: center;
@@ -60,30 +63,30 @@
 }
 
 .p_explain {
-  opacity: 0.3;
-  background-color: #FFE5F2;
-  opacity: 1.0;
+  /*background-color: #FFE5F2;*/
+  background: #FFF0F5;
   width: 67.5%;
   margin-right: 8px;
   /*border: solid 1px #0099FF;*/
 }
 
 .p_vote {
-  background-color: #FFE5F2;
+  background-color: #FFF0F5;
   width: 26.5%;
   /*margin-left: 3px;*/
   /*border: solid 1px #0099FF;*/
 }
 
 .fg_explain {
-  background-color: #DBFFDB;
+  /*background-color: #DBFFDB;*/
+  background: #E6FFE9;
   width: 67.5%;
   margin-right: 8px;
   /*border: solid 1px #0099FF;*/
 }
 
 .fg_vote {
-  background-color: #DBFFDB;
+  background-color: #E6FFE9;
   width: 26.5%;
   /*margin-left: 3px;*/
   /*border: solid 1px #0099FF;*/

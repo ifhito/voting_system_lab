@@ -34,7 +34,13 @@ function submit(){
   var fg_3 = document.getElementById("fg_3").value;
   var fg_4 = document.getElementById("fg_4").value;
   
-  var list = ['小山','持田','姚','加瀬','関','張','前本','池田','坂元','荻野'];
+  var list = ['小山','koyama','こやま',
+              '持田','mochida','もちだ',
+              '姚','you','よう',
+              '加瀬','kase','かせ',
+              '関','seki','せき',
+              '張','chou','ちょう',
+              '前本','池田','坂元','荻野'];
     
   if(list.indexOf(p_1) >= 0){
     document.send.elements[0].disabled = false;
