@@ -1,92 +1,76 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
   <head>
-    <title>Login</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
+    <meta charset="utf-8"/>
+    <title>投票画面</title>
+    <link rel="stylesheet" href="vote_style.css"/>
+  </head>
     
-    <!-- Firebase App is always required and must be first -->
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-    <!-- Add additional services that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
-    
-    <!-- Your web app's Firebase configuration -->
-    <script type="text/javascript">
-      var firebaseConfig = {
-        apiKey: "AIzaSyCW_Zgmt2vkpAsUbV4Ksf6dmhtLms58ubM",
-        authDomain: "fir-test1-1e20d.firebaseapp.com",
-        databaseURL: "https://fir-test1-1e20d.firebaseio.com",
-        projectId: "fir-test1-1e20d",
-        storageBucket: "fir-test1-1e20d.appspot.com",
-        messagingSenderId: "959974201771",
-        appId: "1:959974201771:web:643559588a4000bf"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+  <body onload="PageLoad()">
+    <div class="wrapper">
+      <div class="title">投票画面</div>
       
-      // FirebaseUIインスタンス初期化
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      <div class="p_title">P</div>
+      <div class="p_vote_title">rank</div>
       
-      // FirebaseUIの各種設定
-      var uiConfig = {
-        callbacks: {
-          signInSuccess: function(currentUser, credential, redirectUrl) {
-            // サインイン成功時のコールバック関数
-            // 戻り値で自動的にリダイレクトするかどうかを指定
-            return true;
-          },
-          uiShown: function() {
-            // FirebaseUIウィジェット描画完了時のコールバック関数
-            // 読込中で表示しているローダー要素を消す
-            document.getElementById('loader').style.display = 'none';
-          }
-        },
-        // リダイレクトではなく、ポップアップでサインインフローを表示
-        signInFlow: 'popup',
-        signInSuccessUrl: 'vote.html',
-        signInOptions: [
-          // サポートするプロバイダ(メールアドレス)を指定
-          firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        ],
-        // Terms of service url.(サービス利用規約ページの)
-        tosUrl: '<your-tos-url>'
-      };
-
-      // FirebaseUI描画開始
-      ui.start('#firebaseui-auth-container', uiConfig);
-    </script>
-  </head>  
+      <div class="p_explain">
+        <li>制限時間が守られていたか（過ぎた後，発表を続けていないか）</li>
+        <li>意見・質問に対して，根拠ある返答がはっきりとなされていたか</li>
+        <li>発表内容に対して興味深いと思える点が1つでもあったか</li>
+        <li>発表者の態度を心がけていたか（例．貧乏ゆすり・うつむき・表情）</li>
+        <li>声が大きく，抑揚がついていたか</li>
+        <li>話にリズム・キレ・ストーリー性があったか</li>
+      </div>
+      <div class="p_vote">
+        <div class="rank_num">1位
+          <input id="p_1" type="text" maxlength="10" onchange="submit()">
+        </div>
+        <div class="rank_num">2位
+          <input id="p_2" type="text" maxlength="10">
+        </div>
+        <div class="rank_num">3位
+          <input id="p_3" type="text" maxlength="10">
+        </div>
+        <div class="rank_num">4位
+          <input id="p_4" type="text" maxlength="10">
+        </div>
+      </div>
+      
+      <div class="fg_title">FG</div>
+      <div class="fg_vote_title">rank</div>
+      
+      <div class="fg_explain">
+        <li>意見（「発表」を含む）の整理ができていたか<br>
+          （例．発言の補足のための深掘り・見やすいグラフィック（色，字，文，絵）・意見の書き出し）
+        </li>
+        <li>場に対して，討論が発生するような問題（議題）提起ができていたか</li>
+        <li>討論の切れ目が見極められていたか<br>
+          （グラフィックにおいて，フレームワークが活用できていたか）
+        </li>
+      </div>
+      <div class="fg_vote">
+        <div class="rank_num">1位
+          <input id="fg_1" type="text" maxlength="10">
+        </div>
+        <div class="rank_num">2位
+          <input id="fg_2" type="text" maxlength="10">
+        </div>
+        <div class="rank_num">3位
+          <input id="fg_3" type="text" maxlength="10">
+        </div>
+        <div class="rank_num">4位
+          <input id="fg_4" type="text" maxlength="10">
+        </div>
+      </div>
+            
+      <form name="send">
+        <input type="button" value="送信" disabled>
+      </form>
+      <!--
+      <button id="submit_vote" onclick="submit()">投票</button>
+      -->
+    </div>
   
-  <body>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-    
-    <!--
-    <h1>Hi there!</h1>
-    
-    <p>
-      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
-    -->
-
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <!--
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
-    -->
-    
-    <!--
-    <p>Hello, Firebase Hosting!</p>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-    -->
-    
+    <script type="text/javascript" src="vote_script.js"></script>
   </body>
 </html>
