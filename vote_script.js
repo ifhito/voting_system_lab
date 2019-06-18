@@ -19,9 +19,8 @@ var list = ['ghita','ギータ','ぎーた',
             '坂元','sakamoto','さかもと',
             '荻野','ogino','おぎの'];
 
-document.send.elements[0].disabled = false;
 var p_flag = 3;
-var fg_flag = 
+var fg_flag = 3;
 
 function submit_p1(){
   var p_1 = document.getElementById("p_1").value;
@@ -126,3 +125,14 @@ function submit_fg4(){
     return false;
   }
 }
+
+function flag_check(){
+  if((p1_flag + p2_flag + p3_flag + p4_flag == p_flag) &&
+     (fg1_flag + fg2_flag + fg3_flag + fg4_flag == fg_flag)){
+    document.send.elements[0].disabled = false;
+  }else{
+    
+  }
+}
+
+setInterval(flag_check,1000);
