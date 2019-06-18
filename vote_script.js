@@ -1,3 +1,4 @@
+//各入力フォームの名前が正しいかの確認用のフラグ
 var p1_flag = 0;
 var p2_flag = 0;
 var p3_flag = 0;
@@ -7,6 +8,7 @@ var fg2_flag = 0;
 var fg3_flag = 0;
 var fg4_flag = 0;
 
+//登録する名前
 var list = ['ghita','ギータ','ぎーた',
             '小山','koyama','こやま',
             '持田','mochida','もちだ',
@@ -19,9 +21,13 @@ var list = ['ghita','ギータ','ぎーた',
             '坂元','sakamoto','さかもと',
             '荻野','ogino','おぎの'];
 
+//PとFGの人数
 var p_flag = 3;
 var fg_flag = 3;
 
+
+//各入力フォームに変化があった場合にそれぞれの関数が実行される
+//正しい名前かどうかの確認
 function submit_p1(){
   var p_1 = document.getElementById("p_1").value;
       
@@ -126,13 +132,15 @@ function submit_fg4(){
   }
 }
 
+
+//入力した名前が全て正しければボタンを押せるようにする
+//1秒ごとに入力フォームの状態を確認
 function flag_check(){
   if((p1_flag + p2_flag + p3_flag + p4_flag == p_flag) &&
      (fg1_flag + fg2_flag + fg3_flag + fg4_flag == fg_flag)){
     document.send.elements[0].disabled = false;
   }else{
-    
+    document.send.elements[0].disabled = true;
   }
 }
-
 setInterval(flag_check,1000);
