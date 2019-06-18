@@ -28,11 +28,11 @@ function submit(){
   var p_1 = document.getElementById("p_1").value;
   var p_2 = document.getElementById("p_2").value;
   var p_3 = document.getElementById("p_3").value;
-  var p_4 = document.getElementById("p_4").textContent;
-  var fg_1 = document.getElementById("fg_1").textContent;
-  var fg_2 = document.getElementById("fg_2").textContent;
-  var fg_3 = document.getElementById("fg_3").textContent;
-  var fg_4 = document.getElementById("fg_4").textContent;
+  var p_4 = document.getElementById("p_4").value;
+  var fg_1 = document.getElementById("fg_1").value;
+  var fg_2 = document.getElementById("fg_2").value;
+  var fg_3 = document.getElementById("fg_3").value;
+  var fg_4 = document.getElementById("fg_4").value;
   
   var list = ['小山','持田','姚','加瀬','関','張','前本','池田','坂元','荻野'];
     
