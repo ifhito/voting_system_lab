@@ -146,6 +146,7 @@ function flag_check(){
 setInterval(flag_check,1000);
 
 
+// 投票ボタンを押した時の処理
 function btn_send(){  
   var check_list = new Array(9);
   
@@ -159,6 +160,8 @@ function btn_send(){
   check_list[7] = document.getElementById("check_fg2").checked;
   check_list[8] = document.getElementById("check_fg3").checked;
   
+  // チェックボックスの状態を確認
+  // 押されていないものがあればページ遷移できない
   var check_flag = 0;
   for(var i = 0; i < check_list.length; i++){
     if(check_list[i] != true){
@@ -169,6 +172,7 @@ function btn_send(){
     }
   }
   
+  // 全てのチェックボックスがチェックされていたら投票結果へ
   if(check_flag == 0){
     window.location.href = "result.html";
   }
