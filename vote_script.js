@@ -149,20 +149,27 @@ setInterval(flag_check,1000);
 function btn_send(){  
   var check_list = new Array(9);
   
-  check_list[0] = document.getElementById("check_p1").cheked;
-  check_list[1] = document.getElementById("check_p2").cheked;
-  check_list[2] = document.getElementById("check_p3").cheked;
-  check_list[3] = document.getElementById("check_p4").cheked;
-  check_list[4] = document.getElementById("check_p5").cheked;
-  check_list[5] = document.getElementById("check_p6").cheked;
-  check_list[6] = document.getElementById("check_fg1").cheked;
-  check_list[7] = document.getElementById("check_fg2").cheked;
-  check_list[8] = document.getElementById("check_fg3").cheked;
+  check_list[0] = document.getElementById("check_p1").checked;
+  check_list[1] = document.getElementById("check_p2").checked;
+  check_list[2] = document.getElementById("check_p3").checked;
+  check_list[3] = document.getElementById("check_p4").checked;
+  check_list[4] = document.getElementById("check_p5").checked;
+  check_list[5] = document.getElementById("check_p6").checked;
+  check_list[6] = document.getElementById("check_fg1").checked;
+  check_list[7] = document.getElementById("check_fg2").checked;
+  check_list[8] = document.getElementById("check_fg3").checked;
   
-  for(var i = 0; i < 10; i ++){
+  var check_flag = 0;
+  for(var i = 0; i < check_list.length; i++){
     if(check_list[i] != true){
+      console.log(check_list);
       alert("チェックされていない項目があります。");
+      check_flag = 1;
       break;
     }
+  }
+  
+  if(check_flag == 0){
+    window.location.href = "result.html";
   }
 }
