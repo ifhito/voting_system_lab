@@ -145,16 +145,10 @@ function flag_check(){
 }
 setInterval(flag_check,1000);
 
-function btn_send(){
-  var check_p1 = document.getElementById("check_p1").checked;
-  var check_p2 = document.getElementById("check_p2").checked;
-  var check_p3 = document.getElementById("check_p3").checked;
-  var check_p4 = document.getElementById("check_p4").checked;
-  var check_p5 = document.getElementById("check_p5").checked;
-  var check_p6 = document.getElementById("check_p6").checked;
-  var check_fg1 = document.getElementById("check_fg1").checked;
-  var check_fg2 = document.getElementById("check_fg2").checked;
-  var check_fg3 = document.getElementById("check_fg3").checked;
-  
-  if
+function btn_send(){  
+  for(var i = 0; i < document.check.length; i ++){
+    if(document.check[i].checked != true){
+      alert("チェックされていない項目があります。");
+    }
+  }
 }
