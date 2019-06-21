@@ -22,8 +22,8 @@ var list = ['ghita','ギータ','ぎーた',
             '荻野','ogino','おぎの'];
 
 //PとFGの人数
-var p_flag = 3;
-var fg_flag = 3;
+var p_flag = 1;
+var fg_flag = 1;
 
 
 //各入力フォームに変化があった場合にそれぞれの関数が実行される
@@ -145,10 +145,24 @@ function flag_check(){
 }
 setInterval(flag_check,1000);
 
+
 function btn_send(){  
-  for(var i = 0; i < document.check.length; i ++){
-    if(document.check[i].checked != true){
+  var check_list = new Array(9);
+  
+  check_list[0] = document.getElementById("check_p1").cheked;
+  check_list[1] = document.getElementById("check_p2").cheked;
+  check_list[2] = document.getElementById("check_p3").cheked;
+  check_list[3] = document.getElementById("check_p4").cheked;
+  check_list[4] = document.getElementById("check_p5").cheked;
+  check_list[5] = document.getElementById("check_p6").cheked;
+  check_list[6] = document.getElementById("check_fg1").cheked;
+  check_list[7] = document.getElementById("check_fg2").cheked;
+  check_list[8] = document.getElementById("check_fg3").cheked;
+  
+  for(var i = 0; i < 10; i ++){
+    if(check_list[i] != true){
       alert("チェックされていない項目があります。");
+      break;
     }
   }
 }
