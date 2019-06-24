@@ -178,6 +178,7 @@ function btn_send(){
   }
 }
 
+//ここから下追加しました(関)
 function addValue(thisId){
   let input_sent;
   console.log(thisId.id)
