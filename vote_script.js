@@ -148,7 +148,7 @@ setInterval(flag_check,1000);
 
 // 投票ボタンを押した時の処理
 function btn_send(){  
-  var check_list = new Array(9);
+  var check_list = new Array(8);
   
   check_list[0] = document.getElementById("check_p1").checked;
   check_list[1] = document.getElementById("check_p2").checked;
