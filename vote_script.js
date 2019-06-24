@@ -180,23 +180,23 @@ function btn_send(){
 
 //ここから下追加しました(関)
 function addValue(thisId){
-  let input_sent;
-  console.log(thisId.id)
+  let input_sent;//中のtext格納する変数
+  //console.log(thisId.id)
   //datalistの情報を取得
-  let U = window.document.getElementById("my-friends"+thisId.id)
+  let U = window.document.getElementById("my-friends"+thisId.id)//Uでdatalist内のデータを取得
   //内部に要素がある場合
   if(U.innerHTML!=null){
     //要素を空にする
     U.innerHTML="";
   }
-  console.log(U);
+  //console.log(U);
   //console.log(window.document.getElementById("opt")!=null);
   //id="neko"(今回はinput)要素を受け取る
-  let idname = thisId.id
+  let idname = thisId.id//idの取得
   //要素の値をinput_sentへ
   input_sent = document.getElementById(idname).value;
   //console.log(input_sent);
-  //これが予測変換用の配列(変更お願い)
+  //これが予測変換用の辞書
   const names={
                'seki':'Seki',
                'mochida':'Mochida', 
@@ -225,19 +225,19 @@ function addValue(thisId){
   //const names = ['関', '持田', '加瀬', '張','姚','小山','Ghita','荻野','池田','坂元','前本','せき','もちだ'];
   //配列内の単語でfor
   for(let key in names){
-    //もしも、配列内の要素の一番初めの要素が合致していた場合(現段階では先頭要素のみ)
+    //もしも、配列内の要素の一番初めの要素が合致していた場合(現段階では先頭要素のみ←と思っていたが、後ろ要素はautocompleteが自動的に見てくれているので実質全体見れている)
     if(String(key).charAt(0)==input_sent.charAt(0)){
       //datalist内部のoption要素の作成(これが予測変換として表示される)
       let option = document.createElement('option');
-      option.id="opt"+thisId.id;
+      option.id="opt"+thisId.id;//idの設定
       //console.log(option);
       //optionの値を設定する
-      option.value = String(names[key]);
+      option.value = String(names[key]);//辞書のValueをlistに追加
       option.innerHTML = String(names[key]);
       //console.log(toString.call(option.value));
       //console.log(option.value);
       //datalist内に追加
-      U.appendChild(option);
+      U.appendChild(option);//子要素としてappendする
     }
     
   }

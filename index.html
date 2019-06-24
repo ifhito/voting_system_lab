@@ -27,6 +27,11 @@
         <input type="checkbox" class="p_checkbox" id="check_p6">
         話にリズム・キレ・ストーリー性があったか<br>
       </div>
+      <!--下記から必要なものを色々追加しました-->
+      <!--onkeyup=""で入力を逐一確認し、addvalue(this)を実行している(thisでinputの要素を受け取り)-->
+      <!--autocompleteで予測変換を実装できるようにする-->
+      <!--listでそれぞれのリストの指定-->
+      <!--datalistが予測変換の際のリストを入れる場所(中のリストはリアルタイムで追加)-->
       <div class="p_vote">
         <div class="rank_num">1位
           <input id="p_1" type="text" maxlength="10" onchange="submit_p1()" onkeyup="addValue(this)" list="my-friendsp_1" autocomplete="true">
@@ -60,7 +65,7 @@
           （グラフィックにおいて，フレームワークが活用できていたか）<br>
       </div>
       
-      <!--描きから色々追加-->
+      <!--下記から必要なものを色々追加しました-->
       <!--onkeyup=""で入力を逐一確認し、addvalue(this)を実行している(thisでinputの要素を受け取り)-->
       <!--autocompleteで予測変換を実装できるようにする-->
       <!--listでそれぞれのリストの指定-->
