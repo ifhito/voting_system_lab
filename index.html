@@ -25,11 +25,13 @@
         発表内容に対して<b>興味深いと思える点</b>が1つでもあったか<br>
         <input type="checkbox" class="p_checkbox" id="check_p4">
         <!-- 発表者の態度を心がけていたか（例．貧乏ゆすり・うつむき・表情）<br>-->
-        <b>発表態度</b>は良かったか<br>
+        <b>発表態度</b>は良かったか、<b>声の大きさ</b>と<b>抑揚</b><br>
+        <!--
         <input type="checkbox" class="p_checkbox" id="check_p5">
-        <!-- 声が大きく，抑揚がついていたか<br>-->
+        <!-- 声が大きく，抑揚がついていたか<br>
         <b>声の大きさ</b>と<b>抑揚</b><br>
-        <input type="checkbox" class="p_checkbox" id="check_p6">
+        -->
+        <input type="checkbox" class="p_checkbox" id="check_p5">
         <!-- 話にリズム・キレ・ストーリー性があったか<br>-->
         話に<b>リズム・キレ・ストーリー性</b>があったか<br>
       </div>
@@ -98,9 +100,10 @@
         </div>
       </div>
             
-      <form name="send">
-        <input type="button" value="送信" onclick="btn_send()" disabled style="width:100px;height:50px">
-      </form>
+      <input type="button" id="submit_vote" value="送信" onclick="btn_send()" disabled>
+      <!--<form name="send">
+        <input type="button" id="submit_vote" value="送信" onclick="btn_send()" disabled>
+      </form>-->
       <!--
       <button id="submit_vote" onclick="submit()">投票</button>
       -->

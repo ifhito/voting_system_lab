@@ -155,10 +155,10 @@ function btn_send(){
   check_list[2] = document.getElementById("check_p3").checked;
   check_list[3] = document.getElementById("check_p4").checked;
   check_list[4] = document.getElementById("check_p5").checked;
-  check_list[5] = document.getElementById("check_p6").checked;
-  check_list[6] = document.getElementById("check_fg1").checked;
-  check_list[7] = document.getElementById("check_fg2").checked;
-  check_list[8] = document.getElementById("check_fg3").checked;
+  //check_list[5] = document.getElementById("check_p6").checked;
+  check_list[5] = document.getElementById("check_fg1").checked;
+  check_list[6] = document.getElementById("check_fg2").checked;
+  check_list[7] = document.getElementById("check_fg3").checked;
   
   // チェックボックスの状態を確認
   // 押されていないものがあればページ遷移できない
