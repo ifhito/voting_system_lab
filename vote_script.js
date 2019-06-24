@@ -9,17 +9,17 @@ var fg3_flag = 0;
 var fg4_flag = 0;
 
 //登録する名前
-var list = ['ghita','ギータ','ぎーた',
-            '小山','koyama','こやま',
-            '持田','mochida','もちだ',
-            '姚','you','よう',
-            '加瀬','kase','かせ',
-            '関','seki','せき',
-            '張','chou','ちょう',
-            '前本','maemoto','まえもと',
-            '池田','ikeda','いけだ',
-            '坂元','sakamoto','さかもと',
-            '荻野','ogino','おぎの'];
+var list = ['Ghita','ギータ','ぎーた',
+            '小山','Koyama','こやま',
+            '持田','Mochida','もちだ',
+            '姚','You','よう',
+            '加瀬','Kase','かせ',
+            '関','Seki','せき',
+            '張','Chou','ちょう',
+            '前本','Maemoto','まえもと',
+            '池田','Ikeda','いけだ',
+            '坂元','Sakamoto','さかもと',
+            '荻野','Ogino','おぎの'];
 
 //PとFGの人数
 var p_flag = 1;
@@ -176,4 +176,69 @@ function btn_send(){
   if(check_flag == 0){
     window.location.href = "result.html";
   }
+}
+
+function addValue(thisId){
+  let input_sent;
+  console.log(thisId.id)
+  //datalistの情報を取得
+  let U = window.document.getElementById("my-friends"+thisId.id)
+  //内部に要素がある場合
+  if(U.innerHTML!=null){
+    //要素を空にする
+    U.innerHTML="";
+  }
+  console.log(U);
+  //console.log(window.document.getElementById("opt")!=null);
+  //id="neko"(今回はinput)要素を受け取る
+  let idname = thisId.id
+  //要素の値をinput_sentへ
+  input_sent = document.getElementById(idname).value;
+  //console.log(input_sent);
+  //これが予測変換用の配列(変更お願い)
+  const names={
+               'seki':'Seki',
+               'mochida':'Mochida', 
+               'kase':'Kase', 
+               'chou':'Chou',
+               'you':'You',
+               'koyama':'Koyama',
+               'ghita':'Ghita',
+               'ogino':'Ogino',
+               'ikeda':'Ikeda',
+               'sakamoto':'Sakamoto',
+               'maemoto':'Maemoto',
+               'Seki':'Seki',
+               'Mochida':'Mochida', 
+               'Kase':'Kase', 
+               'Chou':'Chou',
+               'You':'You',
+               'Koyama':'Koyama',
+               'Ghita':'Ghita',
+               'Ogino':'Ogino',
+               'Ikeda':'Ikeda',
+               'Sakamoto':'Sakamoto',
+               'Maemoto':'Maemoto',
+              }
+              
+  //const names = ['関', '持田', '加瀬', '張','姚','小山','Ghita','荻野','池田','坂元','前本','せき','もちだ'];
+  //配列内の単語でfor
+  for(let key in names){
+    //もしも、配列内の要素の一番初めの要素が合致していた場合(現段階では先頭要素のみ)
+    if(String(key).charAt(0)==input_sent.charAt(0)){
+      //datalist内部のoption要素の作成(これが予測変換として表示される)
+      let option = document.createElement('option');
+      option.id="opt"+thisId.id;
+      //console.log(option);
+      //optionの値を設定する
+      option.value = String(names[key]);
+      option.innerHTML = String(names[key]);
+      //console.log(toString.call(option.value));
+      //console.log(option.value);
+      //datalist内に追加
+      U.appendChild(option);
+    }
+    
+  }
+  
 }
