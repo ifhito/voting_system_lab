@@ -144,15 +144,13 @@ function submit_fg4(){
 
 // チェックボックスを全てチェックすると入力フォームがabledになる
 function checkbox_check(){
-  var p_check_list = new Array(5);
-  var fg_check_list = new Array(3);
+  var check_list = new Array(8);
   
-  p_check_list[0] = document.getElementById("check_p1").checked;
-  p_check_list[1] = document.getElementById("check_p2").checked;
-  p_check_list[2] = document.getElementById("check_p3").checked;
+  check_list[0] = document.getElementById("check_p1").checked;
+  check_list[1] = document.getElementById("check_p2").checked;
+  check_list[2] = document.getElementById("check_p3").checked;
   p_check_list[3] = document.getElementById("check_p4").checked;
   p_check_list[4] = document.getElementById("check_p5").checked;
-  
   fg_check_list[0] = document.getElementById("check_fg1").checked;
   fg_check_list[1] = document.getElementById("check_fg2").checked;
   fg_check_list[2] = document.getElementById("check_fg3").checked;
@@ -195,6 +193,7 @@ function checkbox_check(){
       document.fg_form.elements[i].disabled = true;
     }
   }
+  console.log(p_check_list, fg_check_list);
 }
 setInterval(checkbox_check,1000);
 
