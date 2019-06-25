@@ -144,13 +144,16 @@ function submit_fg4(){
 
 // チェックボックスを全てチェックすると入力フォームがabledになる
 function checkbox_check(){
-  var check_list = new Array(8);
+  var p_check_list = new Array(5);
+  var 
+  
   
   check_list[0] = document.getElementById("check_p1").checked;
   check_list[1] = document.getElementById("check_p2").checked;
   check_list[2] = document.getElementById("check_p3").checked;
   check_list[3] = document.getElementById("check_p4").checked;
   check_list[4] = document.getElementById("check_p5").checked;
+  
   check_list[5] = document.getElementById("check_fg1").checked;
   check_list[6] = document.getElementById("check_fg2").checked;
   check_list[7] = document.getElementById("check_fg3").checked;
