@@ -145,38 +145,53 @@ function submit_fg4(){
 // チェックボックスを全てチェックすると入力フォームがabledになる
 function checkbox_check(){
   var p_check_list = new Array(5);
-  var 
+  var fg_check_list = new Array(3);
   
+  p_check_list[0] = document.getElementById("check_p1").checked;
+  p_check_list[1] = document.getElementById("check_p2").checked;
+  p_check_list[2] = document.getElementById("check_p3").checked;
+  p_check_list[3] = document.getElementById("check_p4").checked;
+  p_check_list[4] = document.getElementById("check_p5").checked;
   
-  check_list[0] = document.getElementById("check_p1").checked;
-  check_list[1] = document.getElementById("check_p2").checked;
-  check_list[2] = document.getElementById("check_p3").checked;
-  check_list[3] = document.getElementById("check_p4").checked;
-  check_list[4] = document.getElementById("check_p5").checked;
-  
-  check_list[5] = document.getElementById("check_fg1").checked;
-  check_list[6] = document.getElementById("check_fg2").checked;
-  check_list[7] = document.getElementById("check_fg3").checked;
+  fg_check_list[0] = document.getElementById("check_fg1").checked;
+  fg_check_list[1] = document.getElementById("check_fg2").checked;
+  fg_check_list[2] = document.getElementById("check_fg3").checked;
   
   // チェックボックスの状態を確認
   // 押されていないものがあれば名前を入力できない
-  var check_flag = 0;
-  for(var i = 0; i < check_list.length; i++){
-    if(check_list[i] != true){
-      check_flag = 1;
+  var p_check_flag = 0;
+  for(var i = 0; i < p_check_list.length; i++){
+    if(p_check_list[i] != true){
+      p_check_flag = 1;
+      break;
+    }
+  }
+  
+  var fg_check_flag = 0;
+  for(var i = 0; i < fg_check_list.length; i++){
+    if(fg_check_list[i] != true){
+      fg_check_flag = 1;
       break;
     }
   }
   
   // 全てのチェックボックスがチェックされていたら入力できるようにする
-  if(check_flag == 0){
+  if(p_check_flag == 0){
     for(var i=0; i<10; i++){
       document.p_form.elements[i].disabled = false;
-      document.fg_form.elements[i].disabled = false;
     }
-  }else{
+  }else if(p_check_flag != 0){
     for(var i=0; i<10; i++){
       document.p_form.elements[i].disabled = true;
+    }
+  }
+  
+  if(fg_check_flag == 0){
+    for(var i=0; i<10; i++){
+      document.fg_form.elements[i].disabled = false;
+    }
+  }else if(fg_check_flag != 0){
+    for(var i=0; i<10; i++){
       document.fg_form.elements[i].disabled = true;
     }
   }
@@ -222,14 +237,13 @@ setInterval(flag_check,1000);
 
 // 投票ボタンを押した時の処理
 function btn_send(){  
-  var check_list = new Array(8);
+  /*var check_list = new Array(8);
   
   check_list[0] = document.getElementById("check_p1").checked;
   check_list[1] = document.getElementById("check_p2").checked;
   check_list[2] = document.getElementById("check_p3").checked;
   check_list[3] = document.getElementById("check_p4").checked;
   check_list[4] = document.getElementById("check_p5").checked;
-  //check_list[5] = document.getElementById("check_p6").checked;
   check_list[5] = document.getElementById("check_fg1").checked;
   check_list[6] = document.getElementById("check_fg2").checked;
   check_list[7] = document.getElementById("check_fg3").checked;
@@ -250,6 +264,8 @@ function btn_send(){
   if(check_flag == 0){
     window.location.href = "result.html";
   }
+  */
+  window.location.href = "result.html";
 }
 
 
