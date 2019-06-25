@@ -32,11 +32,12 @@ function submit_p1(){
   var p_1 = document.getElementById("p_1").value;
       
   if(list.indexOf(p_1) >= 0){
+    document.getElementById("p_1").style.backgroundColor = "#FFFFFF";
     p1_flag = 1;
     return true;
   }else{
     //alert(p_1 + 'はリストに存在しません.');
-    document.getElementById("p_1").style.backgroundColor = "#FF0000";
+    document.getElementById("p_1").style.backgroundColor = "mistyrose";
     p1_flag = 0;
     return false;
   }
@@ -46,10 +47,11 @@ function submit_p2(){
   var p_2 = document.getElementById("p_2").value;
       
   if(list.indexOf(p_2) >= 0){
+    document.getElementById("p_2").style.backgroundColor = "#FFFFFF";
     p2_flag = 1;
     return true;
   }else{
-    alert(p_2 + 'はリストに存在しません.');
+    document.getElementById("p_2").style.backgroundColor = "mistyrose";
     p2_flag = 0;
     return false;
   }
@@ -59,10 +61,11 @@ function submit_p3(){
   var p_3 = document.getElementById("p_3").value;
       
   if(list.indexOf(p_3) >= 0){
+    document.getElementById("p_3").style.backgroundColor = "#FFFFFF";
     p3_flag = 1;
     return true;
   }else{
-    alert(p_3 + 'はリストに存在しません.');
+    document.getElementById("p_3").style.backgroundColor = "mistyrose";
     p3_flag = 0;
     return false;
   }
@@ -72,10 +75,11 @@ function submit_p4(){
   var p_4 = document.getElementById("p_4").value;
       
   if(list.indexOf(p_4) >= 0){
+    document.getElementById("p_4").style.backgroundColor = "#FFFFFF";
     p4_flag = 1;
     return true;
   }else{
-    alert(p_4 + 'はリストに存在しません.');
+    document.getElementById("p_4").style.backgroundColor = "mistyrose";
     p4_flag = 0;
     return false;
   }
@@ -85,10 +89,11 @@ function submit_fg1(){
   var fg_1 = document.getElementById("fg_1").value;
       
   if(list.indexOf(fg_1) >= 0){
+    document.getElementById("fg_1").style.backgroundColor = "#FFFFFF";
     fg1_flag = 1;
     return true;
   }else{
-    alert(fg_1 + 'はリストに存在しません.');
+    document.getElementById("fg_1").style.backgroundColor = "mistyrose";
     fg1_flag = 0;
     return false;
   }
@@ -98,10 +103,11 @@ function submit_fg2(){
   var fg_2 = document.getElementById("fg_2").value;
       
   if(list.indexOf(fg_2) >= 0){
+    document.getElementById("fg_2").style.backgroundColor = "#FFFFFF";
     fg2_flag = 1;
     return true;
   }else{
-    alert(fg_2 + 'はリストに存在しません.');
+    document.getElementById("fg_2").style.backgroundColor = "mistyrose";
     fg2_flag = 0;
     return false;
   }
@@ -111,10 +117,11 @@ function submit_fg3(){
   var fg_3 = document.getElementById("fg_3").value;
       
   if(list.indexOf(fg_3) >= 0){
+    document.getElementById("fg_3").style.backgroundColor = "#FFFFFF";
     fg3_flag = 1;
     return true;
   }else{
-    alert(fg_3 + 'はリストに存在しません.');
+    document.getElementById("fg_3").style.backgroundColor = "mistyrose";
     fg3_flag = 0;
     return false;
   }
@@ -124,10 +131,11 @@ function submit_fg4(){
   var fg_4 = document.getElementById("fg_4").value;
       
   if(list.indexOf(fg_4) >= 0){
+    document.getElementById("fg_4").style.backgroundColor = "#FFFFFF";
     fg4_flag = 1;
     return true;
   }else{
-    alert(fg_4 + 'はリストに存在しません.');
+    document.getElementById("fg_4").style.backgroundColor = "mistyrose";
     fg4_flag = 0;
     return false;
   }
@@ -156,7 +164,7 @@ function checkbox_check(){
     }
   }
   
-  // 全てのチェックボックスがチェックされていたら投票結果へ
+  // 全てのチェックボックスがチェックされていたら入力できるようにする
   if(check_flag == 0){
     for(var i=0; i<10; i++){
       document.p_form.elements[i].disabled = false;
@@ -164,6 +172,7 @@ function checkbox_check(){
     }
   }else{
     for(var i=0; i<10; i++){
+      document.send.elements[0].disabled = true; //投票ボタンを無効化
       document.p_form.elements[i].disabled = true;
       document.fg_form.elements[i].disabled = true;
     }
