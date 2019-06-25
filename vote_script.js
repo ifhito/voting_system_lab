@@ -35,7 +35,8 @@ function submit_p1(){
     p1_flag = 1;
     return true;
   }else{
-    alert(p_1 + 'はリストに存在しません.');
+    //alert(p_1 + 'はリストに存在しません.');
+    document.getElementById("p_1").style.backgroundColor = "#FF0000";
     p1_flag = 0;
     return false;
   }
@@ -159,6 +160,12 @@ function checkbox_check(){
   if(check_flag == 0){
     for(var i=0; i<10; i++){
       document.p_form.elements[i].disabled = false;
+      document.fg_form.elements[i].disabled = false;
+    }
+  }else{
+    for(var i=0; i<10; i++){
+      document.p_form.elements[i].disabled = true;
+      document.fg_form.elements[i].disabled = true;
     }
   }
 }
