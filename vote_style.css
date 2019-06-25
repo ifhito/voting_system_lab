@@ -159,3 +159,7 @@ div.column {
   height: 50px;
   font-size: 10pt;
 }
+
+label, input[type='checkbox'] {
+    cursor: pointer;
+}

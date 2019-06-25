@@ -133,6 +133,35 @@ function submit_fg4(){
 }
 
 
+function checkbox_check(){
+  var check_list = new Array(8);
+  
+  check_list[0] = document.getElementById("check_p1").checked;
+  check_list[1] = document.getElementById("check_p2").checked;
+  check_list[2] = document.getElementById("check_p3").checked;
+  check_list[3] = document.getElementById("check_p4").checked;
+  check_list[4] = document.getElementById("check_p5").checked;
+  check_list[5] = document.getElementById("check_fg1").checked;
+  check_list[6] = document.getElementById("check_fg2").checked;
+  check_list[7] = document.getElementById("check_fg3").checked;
+  
+  // チェックボックスの状態を確認
+  // 押されていないものがあれば名前を入力できない
+  var check_flag = 0;
+  for(var i = 0; i < check_list.length; i++){
+    if(check_list[i] != true){
+      check_flag = 1;
+      break;
+    }
+  }
+  
+  // 全てのチェックボックスがチェックされていたら投票結果へ
+  if(check_flag == 0){
+    window.location.href = "result.html";
+  }
+}
+setInterval(checkbox_check,1000);
+
 //入力した名前が全て正しければボタンを押せるようにする
 //1秒ごとに入力フォームの状態を確認
 function flag_check(){
