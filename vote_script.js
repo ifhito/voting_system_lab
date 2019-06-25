@@ -144,56 +144,42 @@ function submit_fg4(){
 
 // チェックボックスを全てチェックすると入力フォームがabledになる
 function checkbox_check(){
-  var check_list = new Array(8);
+  var p_check_list = new Array(8);
+  var fg_check_list
   
   check_list[0] = document.getElementById("check_p1").checked;
   check_list[1] = document.getElementById("check_p2").checked;
   check_list[2] = document.getElementById("check_p3").checked;
-  p_check_list[3] = document.getElementById("check_p4").checked;
-  p_check_list[4] = document.getElementById("check_p5").checked;
-  fg_check_list[0] = document.getElementById("check_fg1").checked;
-  fg_check_list[1] = document.getElementById("check_fg2").checked;
-  fg_check_list[2] = document.getElementById("check_fg3").checked;
+  check_list[3] = document.getElementById("check_p4").checked;
+  check_list[4] = document.getElementById("check_p5").checked;
+  
+  check_list[5] = document.getElementById("check_fg1").checked;
+  check_list[6] = document.getElementById("check_fg2").checked;
+  check_list[7] = document.getElementById("check_fg3").checked;
   
   // チェックボックスの状態を確認
   // 押されていないものがあれば名前を入力できない
-  var p_check_flag = 0;
-  for(var i = 0; i < p_check_list.length; i++){
-    if(p_check_list[i] != true){
-      p_check_flag = 1;
+  var check_flag = 0;
+  for(var i = 0; i < check_list.length; i++){
+    if(check_list[i] != true){
+      check_flag = 1;
       break;
     }
   }
-  
-  var fg_check_flag = 0;
-  for(var i = 0; i < fg_check_list.length; i++){
-    if(fg_check_list[i] != true){
-      fg_check_flag = 1;
-      break;
-    }
-  }
+
   
   // 全てのチェックボックスがチェックされていたら入力できるようにする
-  if(p_check_flag == 0){
+  if(check_flag == 0){
     for(var i=0; i<10; i++){
       document.p_form.elements[i].disabled = false;
-    }
-  }else if(p_check_flag != 0){
-    for(var i=0; i<10; i++){
-      document.p_form.elements[i].disabled = true;
-    }
-  }
-  
-  if(fg_check_flag == 0){
-    for(var i=0; i<10; i++){
       document.fg_form.elements[i].disabled = false;
     }
-  }else if(fg_check_flag != 0){
+  }else{
     for(var i=0; i<10; i++){
+      document.p_form.elements[i].disabled = true;
       document.fg_form.elements[i].disabled = true;
     }
   }
-  console.log(p_check_list, fg_check_list);
 }
 setInterval(checkbox_check,1000);
 
