@@ -157,10 +157,13 @@ function checkbox_check(){
   
   // 全てのチェックボックスがチェックされていたら投票結果へ
   if(check_flag == 0){
-    window.location.href = "result.html";
+    for(var i=0; i<10; i++){
+      document.p_form.elements[i].disabled = false;
+    }
   }
 }
 setInterval(checkbox_check,1000);
+
 
 //入力した名前が全て正しければボタンを押せるようにする
 //1秒ごとに入力フォームの状態を確認
@@ -206,6 +209,7 @@ function btn_send(){
     window.location.href = "result.html";
   }
 }
+
 
 //ここから下追加しました(関)
 function addValue(thisId){
