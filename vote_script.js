@@ -10,16 +10,16 @@ var fg4_flag = 0;
 
 //登録する名前
 var list = ['Ghita','ghita','ギータ','ぎーた',
-            '小山','Koyama','こやま',
-            '持田','Mochida','もちだ',
-            '姚','You','よう',
-            '加瀬','Kase','かせ',
-            '関','Seki','せき',
-            '張','Chou','ちょう',
-            '前本','Maemoto','まえもと',
-            '池田','Ikeda','いけだ',
-            '坂元','Sakamoto','さかもと',
-            '荻野','Ogino','おぎの'];
+            '小山','Koyama','koyama','こやま',
+            '持田','Mochida','mochida','もちだ',
+            '姚','You','you','よう',
+            '加瀬','Kase','kase','かせ',
+            '関','Seki','seki','せき',
+            '張','Chou','chou','ちょう',
+            '前本','Maemoto','maemoto','まえもと',
+            '池田','Ikeda','ikeda','いけだ',
+            '坂元','Sakamoto','sakamoto','さかもと',
+            '荻野','Ogino','ogino','おぎの'];
 
 //PとFGの人数
 var p_flag = 1;
