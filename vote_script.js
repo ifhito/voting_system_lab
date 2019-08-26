@@ -26,120 +26,189 @@ var p_flag = 1;
 var fg_flag = 1;
 
 
+
 //各入力フォームに変化があった場合にそれぞれの関数が実行される
 //正しい名前かどうかの確認
+/*
 function submit_p1(){
-  var p_1 = document.getElementById("p_1").value;
+  var p1 = document.getElementById("p1").value;
       
-  if(list.indexOf(p_1) >= 0){
-    document.getElementById("p_1").style.backgroundColor = "#FFFFFF";
+  if(list.indexOf(p1) >= 0){
+    document.getElementById("p1").style.backgroundColor = "#FFFFFF";
     p1_flag = 1;
     return true;
   }else{
     //alert(p_1 + 'はリストに存在しません.');
-    document.getElementById("p_1").style.backgroundColor = "mistyrose";
+    document.getElementById("p1").style.backgroundColor = "mistyrose";
     p1_flag = 0;
     return false;
   }
 }
 
 function submit_p2(){
-  var p_2 = document.getElementById("p_2").value;
+  var p2 = document.getElementById("p2").value;
       
-  if(list.indexOf(p_2) >= 0){
-    document.getElementById("p_2").style.backgroundColor = "#FFFFFF";
+  if(list.indexOf(p2) >= 0){
+    document.getElementById("p2").style.backgroundColor = "#FFFFFF";
     p2_flag = 1;
     return true;
   }else{
-    document.getElementById("p_2").style.backgroundColor = "mistyrose";
+    document.getElementById("p2").style.backgroundColor = "mistyrose";
     p2_flag = 0;
     return false;
   }
 }
 
 function submit_p3(){
-  var p_3 = document.getElementById("p_3").value;
+  var p3 = document.getElementById("p3").value;
       
-  if(list.indexOf(p_3) >= 0){
-    document.getElementById("p_3").style.backgroundColor = "#FFFFFF";
+  if(list.indexOf(p3) >= 0){
+    document.getElementById("p3").style.backgroundColor = "#FFFFFF";
     p3_flag = 1;
     return true;
   }else{
-    document.getElementById("p_3").style.backgroundColor = "mistyrose";
+    document.getElementById("p3").style.backgroundColor = "mistyrose";
     p3_flag = 0;
     return false;
   }
 }
 
 function submit_p4(){
-  var p_4 = document.getElementById("p_4").value;
+  var p4 = document.getElementById("p4").value;
       
-  if(list.indexOf(p_4) >= 0){
-    document.getElementById("p_4").style.backgroundColor = "#FFFFFF";
+  if(list.indexOf(p4) >= 0){
+    document.getElementById("p4").style.backgroundColor = "#FFFFFF";
     p4_flag = 1;
     return true;
   }else{
-    document.getElementById("p_4").style.backgroundColor = "mistyrose";
+    document.getElementById("p4").style.backgroundColor = "mistyrose";
     p4_flag = 0;
     return false;
   }
 }
 
 function submit_fg1(){
-  var fg_1 = document.getElementById("fg_1").value;
+  var fg1 = document.getElementById("fg1").value;
       
-  if(list.indexOf(fg_1) >= 0){
-    document.getElementById("fg_1").style.backgroundColor = "#FFFFFF";
+  if(list.indexOf(fg1) >= 0){
+    document.getElementById("fg1").style.backgroundColor = "#FFFFFF";
     fg1_flag = 1;
     return true;
   }else{
-    document.getElementById("fg_1").style.backgroundColor = "mistyrose";
+    document.getElementById("fg1").style.backgroundColor = "mistyrose";
     fg1_flag = 0;
     return false;
   }
 }
 
 function submit_fg2(){
-  var fg_2 = document.getElementById("fg_2").value;
+  var fg2 = document.getElementById("fg2").value;
       
-  if(list.indexOf(fg_2) >= 0){
-    document.getElementById("fg_2").style.backgroundColor = "#FFFFFF";
+  if(list.indexOf(fg2) >= 0){
+    document.getElementById("fg2").style.backgroundColor = "#FFFFFF";
     fg2_flag = 1;
     return true;
   }else{
-    document.getElementById("fg_2").style.backgroundColor = "mistyrose";
+    document.getElementById("fg2").style.backgroundColor = "mistyrose";
     fg2_flag = 0;
     return false;
   }
 }
 
 function submit_fg3(){
-  var fg_3 = document.getElementById("fg_3").value;
+  var fg3 = document.getElementById("fg3").value;
       
-  if(list.indexOf(fg_3) >= 0){
-    document.getElementById("fg_3").style.backgroundColor = "#FFFFFF";
+  if(list.indexOf(fg3) >= 0){
+    document.getElementById("fg3").style.backgroundColor = "#FFFFFF";
     fg3_flag = 1;
     return true;
   }else{
-    document.getElementById("fg_3").style.backgroundColor = "mistyrose";
+    document.getElementById("fg3").style.backgroundColor = "mistyrose";
     fg3_flag = 0;
     return false;
   }
 }
 
 function submit_fg4(){
-  var fg_4 = document.getElementById("fg_4").value;
+  var fg4 = document.getElementById("fg4").value;
       
-  if(list.indexOf(fg_4) >= 0){
-    document.getElementById("fg_4").style.backgroundColor = "#FFFFFF";
+  if(list.indexOf(fg4) >= 0){
+    document.getElementById("fg4").style.backgroundColor = "#FFFFFF";
     fg4_flag = 1;
     return true;
   }else{
-    document.getElementById("fg_4").style.backgroundColor = "mistyrose";
+    document.getElementById("fg4").style.backgroundColor = "mistyrose";
     fg4_flag = 0;
     return false;
   }
 }
+*/
+
+
+function submit(thisId){
+  var value = document.getElementById(thisId).value;
+  
+  if(list.indexOf(value) >= 0){
+    document.getElementById(thisId).style.backgroundColor = "#FFFFFF";
+    switch(thisId){
+      case "p1":
+        p1_flag = 1;
+        break;
+      case "p2":
+        p2_flag = 1;
+        break;
+      case "p3":
+        p3_flag = 1;
+        break;
+      case "p4":
+        p4_flag = 1;
+        break;
+      case "fg1":
+        fg1_flag = 1;
+        break;
+      case "fg2":
+        fg2_flag = 1;
+        break;
+      case "fg3":
+        fg3_flag = 1;
+        break;
+      case "fg4":
+        fg4_flag = 1;
+        break;
+    }
+    return true;
+  }else{
+    document.getElementById(thisId).style.backgroundColor = "mistyrose";
+    switch(thisId){
+      case "p1":
+        p1_flag = 0;
+        break;
+      case "p2":
+        p2_flag = 0;
+        break;
+      case "p3":
+        p3_flag = 0;
+        break;
+      case "p4":
+        p4_flag = 0;
+        break;
+      case "fg1":
+        fg1_flag = 0;
+        break;
+      case "fg2":
+        fg2_flag = 0;
+        break;
+      case "fg3":
+        fg3_flag = 0;
+        break;
+      case "fg4":
+        fg4_flag = 0;
+        break;
+    }
+    return false;
+  }
+}
+
 
 
 // チェックボックスを全てチェックすると入力フォームがabledになる
@@ -209,11 +278,12 @@ setInterval(p_checkbox_check,1000);
 setInterval(fg_checkbox_check,1000);
 
 
+
 // 入力した名前が全て正しい&全てチェックしたらボタンを押せるようにする
 // 1秒ごとに入力フォームとチェックボックスの状態を確認
 function flag_check(){
   var check_list = new Array(8);
-  
+
   check_list[0] = document.getElementById("check_p1").checked;
   check_list[1] = document.getElementById("check_p2").checked;
   check_list[2] = document.getElementById("check_p3").checked;
@@ -233,7 +303,6 @@ function flag_check(){
     }
   }
   
-  
   if(check_flag == 0 && 
      (p1_flag + p2_flag + p3_flag + p4_flag == p_flag) &&
      (fg1_flag + fg2_flag + fg3_flag + fg4_flag == fg_flag)){
@@ -243,6 +312,7 @@ function flag_check(){
   }
 }
 setInterval(flag_check,1000);
+
 
 
 // 投票ボタンを押した時の処理
@@ -279,6 +349,86 @@ function btn_send(){
 }
 
 
+function predict(thisInput,thisUl){
+  const input = document.getElementById(thisInput);
+  const ul = document.getElementById(thisUl);
+  const dictMap = new Map([
+    ["ギータ", ["ghita", "Ghita","ギータ","ぎーた"]],
+    ["小山", ["koyama", "Koyama", "小山", "こやま"]],
+    ["持田", ["mochida", "Mochida", "持田", "もちだ"]],
+    ["姚", ["you", "You", "姚", "よう"]],
+    ["加瀬", ["kase", "Kase", "加瀬", "かせ"]],
+    ["関", ["seki", "Seki", "関", "せき"]],
+    ["張", ["chou", "Chou", "張", "ちょう"]],
+    ["荻野", ["ogino", "Ogino", "荻野", "おぎの"]],
+    ["池田", ["ikeda", "Ikeda", "池田", "いけだ"]],
+    ["前本", ["maemoto", "Maemoto", "前本", "まえもと"]],
+    ["坂元", ["sakamoto", "Sakamoto", "坂元", "さかもと"]],
+  ]);
+  
+  
+  dictMap.forEach((v, key) => {
+    
+    const li = document.createElement("li");
+    li.innerHTML = key;
+    li.style.display = "none";
+    
+    // 候補部分をクリックした時
+    li.onclick = () => {
+      // 1回目の処理
+      input.value = li.innerHTML;
+      submit(thisInput);
+      for (let i = 0; i < ul.children.length; ++i) {
+        ul.children[i].style.display = "none";
+      }
+      
+      // 2回目以降
+      input.onblur = () => {
+        window.setTimeout(
+          (function(){
+            for (let i = 0; i < ul.children.length; ++i) {
+              ul.children[i].style.display = "none";
+            }
+          })
+        ,200);
+        window.setTimeout((function(){submit(thisInput)}),100);
+      };
+      
+    };
+    ul.appendChild(li);
+  });
+  
+  // フォームに文字を入力した時
+  input.onkeyup = () => {
+    const str = input.value;
+    let idx = 0;
+    dictMap.forEach((arr, key) => {
+      if (
+        str !== ""
+        && arr.reduce((acc, cur) => acc || cur.indexOf(str) === 0, false)
+      ) {
+        ul.children[idx].style.display = "block";
+      } else {
+        ul.children[idx].style.display = "none";
+      }
+      ++idx;
+    });
+    
+    input.onblur = () => {
+        window.setTimeout(
+          ()=>{
+            for (let i = 0; i < ul.children.length; ++i) {
+              ul.children[i].style.display = "none";
+            }
+          }
+        ,200);
+        window.setTimeout(()=>{submit(thisInput)},100);
+      };
+    
+  };
+}
+
+/*
 //ここから下追加しました(関)
 function addValue(thisId){
   let input_sent;//中のtext格納する変数
@@ -344,3 +494,4 @@ function addValue(thisId){
   }
   
 }
+*/

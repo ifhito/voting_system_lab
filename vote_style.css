@@ -5,6 +5,16 @@
   margin: 0 auto;
 }
 
+.pred {
+  position: absolute;
+  background-color: rgba(255,255,255,0.7);
+  width: 100px;
+  text-align: center;
+  margin-left: 20pt;
+  z-index: 10;
+  
+}
+
 
 .title {
   background-color: #00BFFF;
@@ -71,6 +81,7 @@
 }
 
 .p_vote {
+  position: relative;
   background-color: #FFF0F5;
   width: 26.5%;
   /*margin-left: 3px;*/
