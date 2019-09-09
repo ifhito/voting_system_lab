@@ -8,3 +8,4 @@
 - vote_style.cssが全体のCSS
 - result.htmlが投票結果のhtml
 
+3人で作成中
