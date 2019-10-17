@@ -1,12 +1,25 @@
 <!DOCTYPE html>
+<!--投票画面-->
+
 <html>
   <head>
     <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- import -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- import -->
     <title>投票画面</title>
-    <link rel="stylesheet" href="vote_style.css"/>
+    <link rel="stylesheet" href="vote.css"/>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
+    <script type="text/javascript" src="/vote.js" defer></script>
   </head>
     
-  <body onload="PageLoad()">
+  <body>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    
     <div class="wrapper">
       <div class="title"><b>■投票画面■</b></div>
       
@@ -77,6 +90,11 @@
           <input id="p4" type="text" maxlength="10" onfocus="predict('p4','ul_p4')" disabled>
           <div class="pred" id="ul_p4"></div>
         </div>
+          
+        <div class="rank_num">5位
+          <input id="p5" type="text" maxlength="10" onfocus="predict('p5','ul_p5')" disabled>
+          <div class="pred" id="ul_p5"></div>
+        </div>
         </form>
         
       </div>
@@ -135,6 +153,11 @@
           <input id="fg4" type="text" maxlength="10" onfocus="predict('fg4','ul_fg4')" disabled>
           <div class="pred" id="ul_fg4"></div>
         </div>
+          
+        <div class="rank_num">5位
+          <input id="fg5" type="text" maxlength="10" onfocus="predict('fg5','ul_fg5')" disabled>
+          <div class="pred" id="ul_fg5"></div>
+        </div>
         </form>
         
       </div>
@@ -147,6 +170,5 @@
       -->
     </div>
   
-    <script type="text/javascript" src="vote_script.js"></script>
   </body>
 </html>
