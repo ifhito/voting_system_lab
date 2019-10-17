@@ -1,21 +1,25 @@
 <!DOCTYPE html>
+<!--ログイン画面-->
+
 <html lang="ja">
   <head>
     <title>Login</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
-    
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css"
+    />
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
     <!-- Add additional services that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
-    
     <!-- Your web app's Firebase configuration -->
     <script type="text/javascript">
       var firebaseConfig = {
@@ -29,10 +33,8 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      
       // FirebaseUIインスタンス初期化
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      
       // FirebaseUIの各種設定
       var uiConfig = {
         callbacks: {
@@ -44,49 +46,42 @@
           uiShown: function() {
             // FirebaseUIウィジェット描画完了時のコールバック関数
             // 読込中で表示しているローダー要素を消す
-            document.getElementById('loader').style.display = 'none';
+            document.getElementById("loader").style.display = "none";
           }
         },
         // リダイレクトではなく、ポップアップでサインインフローを表示
-        signInFlow: 'popup',
-        signInSuccessUrl: 'vote.html',
+        signInFlow: "popup",
+        signInSuccessUrl: "vote.html",
         signInOptions: [
           // サポートするプロバイダ(メールアドレス)を指定
-          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
         // Terms of service url.(サービス利用規約ページの)
-        tosUrl: '<your-tos-url>'
+        tosUrl: "<your-tos-url>"
       };
-
       // FirebaseUI描画開始
-      ui.start('#firebaseui-auth-container', uiConfig);
+      ui.start("#firebaseui-auth-container", uiConfig);
     </script>
-  </head>  
-  
+  </head>
   <body>
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
-    
     <!--
-    <h1>Hi there!</h1>
-    
-    <p>
-      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
-    -->
-
+<h1>Hi there!</h1>
+<p>
+I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
+</p>
+-->
     <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
+to make it easier for folks to view source and remix -->
     <!--
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
-    -->
-    
+<div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+<script src="https://button.glitch.me/button.js"></script>
+-->
     <!--
-    <p>Hello, Firebase Hosting!</p>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-    -->
-    
+<p>Hello, Firebase Hosting!</p>
+<div id="firebaseui-auth-container"></div>
+<div id="loader">Loading...</div>
+-->
   </body>
 </html>

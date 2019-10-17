@@ -1,12 +1,25 @@
 <!DOCTYPE html>
+<!--投票画面-->
+
 <html>
   <head>
     <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- import -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- import -->
     <title>投票画面</title>
-    <link rel="stylesheet" href="vote_style.css"/>
+    <link rel="stylesheet" href="vote.css"/>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
+    <script type="text/javascript" src="/vote.js" defer></script>
   </head>
     
-  <body onload="PageLoad()">
+  <body>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    
     <div class="wrapper">
       <div class="title"><b>■投票画面■</b></div>
       
@@ -59,23 +72,28 @@
         
         <form name="p_form">
         <div class="rank_num">1位
-          <input id="p_1" type="text" maxlength="10" onchange="submit_p1()" onkeyup="addValue(this)" list="my-friendsp_1" autocomplete="true" disabled>
-          <datalist id="my-friendsp_1"></datalist>
-        </div>
+          <input id="p1" type="text" maxlength="10" onfocus="predict('p1','ul_p1')" disabled>
+          <div class="pred" id="ul_p1"></div>
+          </div>
         
         <div class="rank_num">2位
-          <input id="p_2" type="text" maxlength="10" onchange="submit_p2()" onkeyup="addValue(this)" list="my-friendsp_2" autocomplete="true" disabled>
-          <datalist id="my-friendsp_2"></datalist>
+          <input id="p2" type="text" maxlength="10" onfocus="predict('p2','ul_p2')" disabled>
+          <div class="pred" id="ul_p2"></div>
         </div>
         
         <div class="rank_num">3位
-          <input id="p_3" type="text" maxlength="10" onchange="submit_p3()" onkeyup="addValue(this)" list="my-friendsp_3" autocomplete="true" disabled>
-          <datalist id="my-friendsp_3"></datalist>
+          <input id="p3" type="text" maxlength="10" onfocus="predict('p3','ul_p3')" disabled>
+          <div class="pred" id="ul_p3"></div>
         </div>
         
         <div class="rank_num">4位
-          <input id="p_4" type="text" maxlength="10" onchange="submit_p4()" onkeyup="addValue(this)" list="my-friendsp_4" autocomplete="true" disabled>
-          <datalist id="my-friendsp_4"></datalist>
+          <input id="p4" type="text" maxlength="10" onfocus="predict('p4','ul_p4')" disabled>
+          <div class="pred" id="ul_p4"></div>
+        </div>
+          
+        <div class="rank_num">5位
+          <input id="p5" type="text" maxlength="10" onfocus="predict('p5','ul_p5')" disabled>
+          <div class="pred" id="ul_p5"></div>
         </div>
         </form>
         
@@ -117,23 +135,28 @@
         
         <form name="fg_form">
         <div class="rank_num">1位
-          <input id="fg_1" type="text" maxlength="10" onchange="submit_fg1()" onkeyup="addValue(this)" list="my-friendsfg_1" autocomplete="true" disabled>
-          <datalist id="my-friendsfg_1"></datalist>
+          <input id="fg1" type="text" maxlength="10" onfocus="predict('fg1','ul_fg1')" disabled>
+          <div class="pred" id="ul_fg1"></div>
         </div>
         
         <div class="rank_num">2位
-          <input id="fg_2" type="text" maxlength="10" onchange="submit_fg2()" onkeyup="addValue(this)" list="my-friendsfg_2" autocomplete="true" disabled>
-          <datalist id="my-friendsfg_2"></datalist>
+          <input id="fg2" type="text" maxlength="10" onfocus="predict('fg2','ul_fg2')" disabled>
+          <div class="pred" id="ul_fg2"></div>
         </div>
         
         <div class="rank_num">3位
-          <input id="fg_3" type="text" maxlength="10" onchange="submit_fg3()" onkeyup="addValue(this)" list="my-friendsfg_3" autocomplete="true" disabled>
-          <datalist id="my-friendsfg_3"></datalist>
+          <input id="fg3" type="text" maxlength="10" onfocus="predict('fg3','ul_fg3')" disabled>
+          <div class="pred" id="ul_fg3"></div>
         </div>
         
         <div class="rank_num">4位
-          <input id="fg_4" type="text" maxlength="10" onchange="submit_fg4()" onkeyup="addValue(this)" list="my-friendsfg_4" autocomplete="true" disabled>
-          <datalist id="my-friendsfg_4"></datalist>
+          <input id="fg4" type="text" maxlength="10" onfocus="predict('fg4','ul_fg4')" disabled>
+          <div class="pred" id="ul_fg4"></div>
+        </div>
+          
+        <div class="rank_num">5位
+          <input id="fg5" type="text" maxlength="10" onfocus="predict('fg5','ul_fg5')" disabled>
+          <div class="pred" id="ul_fg5"></div>
         </div>
         </form>
         
@@ -147,6 +170,5 @@
       -->
     </div>
   
-    <script type="text/javascript" src="vote_script.js"></script>
   </body>
 </html>
