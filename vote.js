@@ -4,12 +4,14 @@ var p1_flag = 0;
 var p2_flag = 0;
 var p3_flag = 0;
 var p4_flag = 0;
+var p5_flag = 0;
 var fg1_flag = 0;
 var fg2_flag = 0;
 var fg3_flag = 0;
 var fg4_flag = 0;
+var fg5_flag = 0;
 
-//登録する名前
+//登録する名前(入力フォーム内にここに書かれていない文字列が入ると赤色に変化する)
 var list = ['Ghita','ghita','ギータ','ぎーた',
             '小山','Koyama','koyama','こやま',
             '持田','Mochida','mochida','もちだ',
@@ -23,15 +25,19 @@ var list = ['Ghita','ghita','ギータ','ぎーた',
             '荻野','Ogino','ogino','おぎの'];
 
 //PとFGの人数
-//指定した数だけフォームに入力できる & firebaseにデータが送信される
-var p_num = 2;
-var fg_num = 2;
+//指定した数だけフォームに入力できる & firebaseにデータが送信される、ようにしたいな。
+var p_num = 5;
+var fg_num = 5;
 
-//投票者のID。ログイン時に割り当てられるようにしとく。
-var selfID = "Kase"
+//selfID:投票者のID。ログイン時にデータベース(user_name/<year>)より取得して割り当てられる。
+//const db = firebase.firestore();
+
+var login_user_email = "";
+getUserName(db,'/user_name/2019');
+var selfID = "";
 
 
-
+// 入力フォーム内に入力された名前を確認、listに登録されたもの以外が入ると赤色に変化する。
 function submit(thisId){
   var value = document.getElementById(thisId).value;
   
@@ -50,6 +56,9 @@ function submit(thisId){
       case "p4":
         p4_flag = 1;
         break;
+      case "p5":
+        p5_flag = 1;
+        break;
       case "fg1":
         fg1_flag = 1;
         break;
@@ -61,6 +70,9 @@ function submit(thisId){
         break;
       case "fg4":
         fg4_flag = 1;
+        break;
+      case "fg5":
+        fg5_flag = 1;
         break;
     }
     return true;
@@ -96,9 +108,54 @@ function submit(thisId){
   }
 }
 
+function connecttext(textid_list,  checkboxid_list ) {
+  var ischecked_list = checkboxid_list.map(id => document.getElementById(id).checked);
+  if( ischecked_list.every(value => value == true) ) {
+    // チェックが入っていたら有効化
+    for (let item of textid_list) {
+      document.getElementById(item).disabled = false;
+      document.getElementById(item).style.borderColor = "#000000";
+    }
+  }
+  else {
+    // チェックが入っていなかったら無効化
+    for (let item of textid_list) {
+      document.getElementById(item).disabled = true;
+    }
+  }
+}
 
-
+var check_p_list = [
+  "check_p1",
+  "check_p2",
+  "check_p3",
+  "check_p4",
+  "check_p5",
+];
+var text_p_list = [
+  "p1",
+  "p2",
+  "p3",
+  "p4",
+  "p5",
+  "submit_vote",
+];
+var check_fg_list = [
+  "check_fg1",
+  "check_fg2",
+  "check_fg3",
+];
+var text_fg_list = [
+  "fg1",
+  "fg2",
+  "fg3",
+  "fg4",
+  "fg5",
+  "submit_vote",
+]
+/*
 // チェックボックスを全てチェックすると入力フォームがabledになる
+
 function p_checkbox_check(){
   var check_list = new Array(5);
   
@@ -134,6 +191,8 @@ function p_checkbox_check(){
     }
   }
 }
+
+
 function fg_checkbox_check(){
   var check_list = new Array(3);
   
@@ -167,32 +226,20 @@ function fg_checkbox_check(){
     }
   }
 }
-setInterval(p_checkbox_check,1000);
-setInterval(fg_checkbox_check,1000);
-
-
-
-// 入力した名前が全て正しい&全てチェックしたらボタンを押せるようにする
-// 1秒ごとに入力フォームとチェックボックスの状態を確認
+//setInterval(p_checkbox_check,1000);
+//setInterval(fg_checkbox_check,1000);
+// 1秒ごとにチェックボックスの状態を確認。全てチェックしたらボタンを押せるようにする。
 function flag_check(){
-  let check_list = new Array(8);
-  let check = "";
-  for(let i = 1; i<9; i++ ){
-    if(i<6){
-      check = "check_p"+i;
-    }else{
-      check = "check_fg"+(i-5);
-    }
-    check_list[i - 1] = document.getElementById(check).checked;
-  }
-  // check_list[0] = document.getElementById("check_p1").checked;
-  // check_list[1] = document.getElementById("check_p2").checked;
-  // check_list[2] = document.getElementById("check_p3").checked;
-  // check_list[3] = document.getElementById("check_p4").checked;
-  // check_list[4] = document.getElementById("check_p5").checked;
-  // check_list[5] = document.getElementById("check_fg1").checked;
-  // check_list[6] = document.getElementById("check_fg2").checked;
-  // check_list[7] = document.getElementById("check_fg3").checked;
+  var check_list = new Array(8);
+
+  check_list[0] = document.getElementById("check_p1").checked;
+  check_list[1] = document.getElementById("check_p2").checked;
+  check_list[2] = document.getElementById("check_p3").checked;
+  check_list[3] = document.getElementById("check_p4").checked;
+  check_list[4] = document.getElementById("check_p5").checked;
+  check_list[5] = document.getElementById("check_fg1").checked;
+  check_list[6] = document.getElementById("check_fg2").checked;
+  check_list[7] = document.getElementById("check_fg3").checked;
   
   // チェックボックスの状態を確認
   // 押されていないものがあれば名前を入力できない
@@ -204,20 +251,21 @@ function flag_check(){
     }
   }
   
-  if(check_flag == 0 && 
-     (p1_flag + p2_flag + p3_flag + p4_flag == p_num) &&
-     (fg1_flag + fg2_flag + fg3_flag + fg4_flag == fg_num)){
+  
+  //if(check_flag == 0 && 
+  //   (p1_flag + p2_flag + p3_flag + p4_flag == p_num) &&
+  //   (fg1_flag + fg2_flag + fg3_flag + fg4_flag == fg_num)){
+  
+  if(check_flag == 0){
     document.send.elements[0].disabled = false;
   }else{
     document.send.elements[0].disabled = true;
   }
 }
 setInterval(flag_check,1000);
-
-
+*/
 
 // 投票ボタンを押した時の処理
-const fakePairData = {pair1:{P:"Zhang", FG:"Seki"}, pair2:{P:"Koyama", FG:"Mochida"}, pair3:{P:"Yao", FG:"Kase"}};
 async function btn_send(){  
   
   /* firebaseにデータを送信 */
@@ -235,30 +283,76 @@ async function btn_send(){
   for(let i=0; i<fg_num; i++){
     fg_form_value[i] = document.getElementById(fg_form[i]).value;
   }
+    
   
-  //各フォームのデータを成形してfirebaseに送信
+  // 自分の名前が入力されている xor 複数同じ名前が含まれている xor 間違った名前が入力されていると投票できなくなる。
+  // 複数同じ名前が含まれているかのチェック
+  var p_fg_form_value = p_form_value.concat(fg_form_value);
+  var multipleCheck = p_fg_form_value.filter(
+  function (x, i, self) {
+    return self.indexOf(x) === i && i !== self.lastIndexOf(x);
+  });
+  
+  // 間違った名前が入力されているかのチェック
+  var count_p_num = 0;
   for(let i = 0; i < p_num; i++){
-    var p_voteData = {
-      votersId: selfID,
-      votedId: p_form_value[i],
-      voteRank: i+1,
-    };
-    addVoteData(p_voteData);
+    if(p_form_value[i] != "") {
+      count_p_num += 1;
+    }
   }
+  var count_fg_num = 0;
   for(let i = 0; i < fg_num; i++){
-    var fg_voteData = {
-      votersId: selfID,
-      votedId: fg_form_value[i],
-      voteRank: i+1,
-    };
-    addVoteData(fg_voteData);
-    addPairData(fakePairData);
+    if(fg_form_value[i] != "") {
+      count_fg_num += 1;
+    }
   }
   
-  //投票結果画面へ遷移
-  window.location.href = "result.html"
-  //setTimeout(move,3000);
+  var p_num_check = false;
+  if(p1_flag+p2_flag+p3_flag+p4_flag+p5_flag == count_p_num){
+    p_num_check = true;
+  }
+  var fg_num_check = false;
+  if(fg1_flag+fg2_flag+fg3_flag+fg4_flag+fg5_flag == count_fg_num){
+    fg_num_check = true;
+  }
+  
+  
+  if(p_form_value.indexOf(selfID) < 0 && fg_form_value.indexOf(selfID) < 0 && multipleCheck <= 0 && p_num_check && fg_num_check){
+    //各フォームのデータを成形してfirebaseに送信
+    for(let i = 0; i < p_num; i++){
+      if(p_form_value[i] != "") {
+        var p_voteData = {
+          votersId: selfID,
+          votedId: p_form_value[i],
+          voteRank: i+1,
+          role: "Presentor",
+        };
+        await addVoteData(p_voteData);
+      }
+    }
+    for(let i = 0; i < fg_num; i++){
+      if(fg_form_value[i] != ""){
+        var fg_voteData = {
+          votersId: selfID,
+          votedId: fg_form_value[i],
+          voteRank: i+1,
+          role: "Facilitator",
+        };
+        await addVoteData(fg_voteData);
+      }
+    }
+
+    //投票結果画面へ遷移
+    var move = function(){
+      window.location.href = "result2.html"
+    } 
+    setTimeout(move, 1200);
+  }else{
+    alert('自分の名前や間違った名前、同じ名前を複数個入力している可能性があります。');
+  };
 }
+
+
 
 
 function predict(thisInput,thisUl){
@@ -268,7 +362,7 @@ function predict(thisInput,thisUl){
     ["Ghita", ["ghita", "Ghita","ギータ","ぎーた"]],
     ["Koyama", ["koyama", "Koyama", "小山", "こやま"]],
     ["Mochida", ["mochida", "Mochida", "持田", "もちだ"]],
-    ["Yao", ["yao", "Yao", "姚", "よう"]],
+    ["Yao", ["yao", "Yao", "you","You","姚", "よう"]],
     ["Kase", ["kase", "Kase", "加瀬", "かせ"]],
     ["Seki", ["seki", "Seki", "関", "せき"]],
     ["Zhang", ["zhang","Zhang","chou", "Chou", "張", "ちょう"]],
@@ -408,150 +502,17 @@ function addValue(thisId){
 }
 */
 
+// 6秒ごとに自分の最終ログイン状態をアップデート
+setInterval(function(){return showParticipant(db)}, 6*1000);
 
+// 10秒ごとに自分の最終ログイン状態をアップデート
+setInterval(function(){return updateStatus(db, getTodayTimestamp())}, 10*1000);
 
-/* firebase関連のscript */
-var firebaseConfig = {
-        apiKey: "AIzaSyDSW3UfkgT5kO1kTzDIFlv_QsDRkKmUCfs",
-        authDomain: "voting-system-6d23d.firebaseapp.com",
-        databaseURL: "https://voting-system-6d23d.firebaseio.com",
-        projectId: "voting-system-6d23d",
-        storageBucket: "voting-system-6d23d.appspot.com",
-        messagingSenderId: "515017082682",
-        appId: "1:515017082682:web:a20d97cedb8e0105"
-      };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// 30秒ごとにログイン状態をチェックして、ログインしていなかったらログインを強制する
+setInterval(function(){return loggedin2(firebase)}, 30*1000);
 
-let db = firebase.firestore();
-
-function getTodayTimestamp(){
-    var date = new Date();
-    var today = date.getTime()
- - date.getMilliseconds()
- - date.getSeconds()*1000
- - date.getMinutes()*1000*60
- - date.getHours()*1000*60*60;
-    console.log(today);
-    return today;
-};
-
-function dayToTimestamp(formattedDayTime){
-  return Date.parse(formattedDayTime);
-};
-
-function overWriteDataToDB(database, docPath, newData){
-  // 注意:この関数を使うと、該当doc内の内容は「書き換えられる(上書きされる)」ので、不用意に使わないでください
-  database.doc(docPath).update(
-    newData // ←ここは上書きする動作のコード
-  ).then (function() {
-    console.log("Document written with ID: ");
-  }).catch(function(error) {
-    console.error("Error adding document: ", error);
-  });
-};
-
-
-function addDataToDB(database, docPath, newData){
-  // util function to add data to database
-  database.doc(docPath).set(
-    newData, { merge: true }
-  ).then (function() {
-    console.log("Document written with ID: ");
-  }).catch(function(error) {
-    console.error("Error adding document: ", error);
-  });
-};
-
-
-// document.getElementById("text-button_update_vote").onclick = async() => {updateVoteData(fakeData);};
-// document.getElementById("text-button_add_vote").onclick = async() => {addVoteData(fakeData);};
-/*
-var fakeData = {
-    votersID:"Seki",
-    votedID:"Zhang",
-    voteRank:3,
-}
-*/
-async function addVoteData(voteData){
-  try{
-    //document.getElementById("add_vote").innerHTML = "send";
-    // Add a new document with a generated id.
-    let todayTimestamp = getTodayTimestamp();
-    let timestamp = new Date().getTime();
-    let jstTime = new Date().toString();
-    console.log(timestamp);
-    let newData = {
-        [timestamp]:{
-          voters_id:voteData.votersId,
-          voted_id:voteData.votedId,
-          vote_rank:voteData.voteRank,
-          timestamp:timestamp,
-          jst_time:jstTime,
-        }
-    };
-    await addDataToDB(db, "vote_data/"+[todayTimestamp]+"/", newData);
-    console.log("update succeed");
-  } catch (error){
-    // The document probably doesn't exist.
-    console.error("Error updating document: ", error);
-  }
-};
-
-//var selfID = 'zhang';
-
-function updateStatus(database, dateTimestamp){
-  var docPath = 'todays_participant/'+dateTimestamp.toString()+'/';
-  var newData = {[selfID]:true}; // ここのセルフIDはブラウザ内部のID管理で取得する、グローバル変数を参照 関数定義の上の二行目
-  addDataToDB(database, docPath, newData);
-};
-
-function updatePresentationDuration(database, dateTimestamp, presenterID, duration){
-  var docPath = 'presentation_duration/'+dateTimestamp.toString()+'/';
-  var newData = {[presenterID]:{
-    duration:duration,
-  }};
-  addDataToDB(database, docPath, newData);
-};
-
-function getDataFromDB(database, docPath,){
-  var docRef = db.doc(docPath);
-
-  docRef.get().then(function(doc) {
-      if (doc.exists) {
-        var docData = doc.data();
-          console.log("Document data:", docData);
-        return docData;
-      } else {
-          console.log("No such document!");
-        return "";
-      };
-  }).catch(function(error) {
-      console.log("Error getting document:", error);
-    return "";
-  });
-};
-
-function getVoteData(database, timestamp){
-  var data = getDataFromDB(database, "vote_data/"+timestamp.toString());
-  return data;
-};
-
-
-async function addPairData(pairData){
-  try{
-    //document.getElementById("add_vote").innerHTML = "send";
-    // Add a new document with a generated id.
-    let todayTimestamp = getTodayTimestamp();
-    let timestamp = new Date().getTime();
-    console.log(timestamp);
-    var newData = pairData;
-    newData['updated_at'] = timestamp;
-      
-    await addDataToDB(db, "pair_data/"+[todayTimestamp]+"/", newData);
-    console.log("update succeed");
-  } catch (error){
-    // The document probably doesn't exist.
-    console.error("Error updating document: ", error);
-  };
+function PageLoad(){
+  console.log("page loaded");
+  loggedin2(firebase);
+  showParticipant(db);
 };

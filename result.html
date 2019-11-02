@@ -5,11 +5,27 @@
   <meta charset="utf-8" />
   <title>投票結果</title>
   <link rel="stylesheet" href="result.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <head>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
+    <script src="/read_firebase.js"></script>
+  </head>
   <body>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-firestore.js"></script>
+    
+
+
     <h1>投票結果</h1>
+    <form id="form">
+      被投票者
+      <input type="text" id="name" />
+      <br />
+      投票者
+      <input type="text" id="value" />
+      <button type="button" id="sbmt">送信</button>
+    </form>
     <div class="image"><img id="newImg" /></div>
     <div id="canvas_wrapper">
       <canvas id="myCanvas" width="740" height="300"
