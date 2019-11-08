@@ -1,274 +1,123 @@
-//投票結果画面のjsファイル
+// googleチャートAPIのロード
+google.charts.load("current", { packages: ["corechart"] });
+//プレゼンターの結果の変数
+let presentorResult = new Map();
+//ファシリテータの結果の変数
+let facilitatorResult = new Map();
+//googleで最終的に表示するtableの配列
+let table = [["member"]];
 
-// Your web app's Firebase configuration
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCD3zAlWdo1Y8e1TlX6FOrLLisviP3gOs0",
-//   authDomain: "testdb-32343.firebaseapp.com",
-//   databaseURL: "https://testdb-32343.firebaseio.com",
-//   projectId: "testdb-32343",
-//   storageBucket: "testdb-32343.appspot.com",
-//   messagingSenderId: "203459977337",
-//   appId: "1:203459977337:web:02b88f0757f9444d"
-// };
-
-// var firebaseConfig = {
-//   apiKey: "AIzaSyDSW3UfkgT5kO1kTzDIFlv_QsDRkKmUCfs",
-//   authDomain: "voting-system-6d23d.firebaseapp.com",
-//   databaseURL: "https://voting-system-6d23d.firebaseio.com",
-//   projectId: "voting-system-6d23d",
-//   storageBucket: "voting-system-6d23d.appspot.com",
-//   messagingSenderId: "515017082682",
-//   appId: "1:515017082682:web:a20d97cedb8e0105"
-// };
-
-// Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-let db = firebase.firestore();
-//heightの設定
-let height = 40;
-//fgの変数初期化
-let fg = new Map();
-//pの変数初期化
-let p = new Map();
-//タイムスタンプの取得
-const timestamp = getTodayTimestamp();
-//一つの文字のサイズ
-let text_size = 100;
-//screenheightはwidowの2分の1
-let screenheight = window.innerHeight / 2;
-//screenwidthはwindowの2分の1
-let screenwidth = window.innerWidth / 2;
-//canvasの初期化
-let canvas = document.getElementById("myCanvas");
-//canvasは2d
-let ctx = canvas.getContext("2d");
-
-//棒グラフの描写
-let drawRect = (x, y, w, h) => {
-  ctx.fillStyle = "rgb(0,0,0)";
-  ctx.fillRect(x, y, w, h);
-};
-//文字の設定
-let drawWord = (text, x, y, Maxlength) => {
-  ctx.textBaseline = "middle";
-  ctx.textAlign = "center";
-  ctx.font = "20px 'ＭＳ ゴシック'";
-  ctx.fillStyle = "rgb(0,0,0)";
-  ctx.fillText(text, x, y, Maxlength);
-};
-//canpasの描画
-const draws = () => {
-  //全体のcanpasを作成する
-  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  //描画のリセット
-  ctx.beginPath();
-  //棒グラフの描画
-  ctx.fillStyle = "rgb(255,255,255)";
-  //Rectの作成
-  ctx.fillRect(0, 0, 740, 300);
-  //文字間の幅を決めるためのj
-  let j = 0;
-  //fgを繰り返しで表示
-
-  drawWord(
-    "FG",
-    text_size * 1.5,
-    (10 + height) * (j + 1) + height / 2,
-    text_size
-  );
-  fg.forEach((value, key, map) => {
-    //console.log(key);
-    drawWord(key, text_size, (10 + height) * (j + 2) + height / 2, text_size);
-    drawRect(text_size * 1.5, (10 + height) * (j + 2), value, height);
-    drawWord(
-      String(value),
-      text_size * 1.5 + value * 3,
-      (10 + height) * (j + 2) + height / 2,
-      text_size
-    );
-    j++;
-  });
-  //次の列に変換なのでjを初期化
-  j = 0;
-  drawWord("P", text_size * 1.5 + 400, 10 + height + height / 2, text_size);
-  p.forEach((value, key, map) => {
-    drawWord(
-      key,
-      text_size + 400,
-      (10 + height) * (j + 2) + height / 2,
-      text_size
-    );
-    drawRect(text_size * 1.5 + 400, (10 + height) * (j + 2), value, height);
-    drawWord(
-      String(value),
-      text_size * 1.5 + value * 5 + 400,
-      (10 + height) * (j + 2) + height / 2,
-      text_size
-    );
-    j++;
-  });
-  //canvasの描画
-  let canvas = document.getElementById("myCanvas");
-  //png化
-  let png = canvas.toDataURL();
-  document.getElementById("newImg").src = png;
-  // console.log("end");
-};
-//windowがロードされた時
-window.onload = async () => {
-  // console.log(p, fg);
-  await getPairData(db, "pair_data/" + timestamp.toString());
-  // console.log("end getPairData");
-  if (!Object.keys(fg).length && !Object.keys(p).length) {
-    //ここでVoteDataの更新
-    await getVoteData(db, timestamp);
+//全てのグラフを書く関数
+async function drawAllChart(data) {
+  presentorResult = new Map();
+  facilitatorResult = new Map();
+  //voteDataにdataを入れる
+  const voteData = data;
+  for (let votersId in voteData) {
+    table[0].push(votersId);
+    for (let votedId in voteData[votersId]) {
+      //プレゼンターだった場合
+      if (voteData[votersId][votedId]["role"] == "Presentor") {
+        //その名前が連想配列内にあるかどうか
+        if (presentorResult.has(votedId)) {
+          presentorResult
+            .get(votedId)
+            .push(voteData[votersId][votedId]["vote_rank"]);
+        } else {
+          presentorResult.set(votedId, [
+            voteData[votersId][votedId]["vote_rank"]
+          ]);
+        }
+        //ファシリテータだった場合
+      } else if (voteData[votersId][votedId]["role"] == "Facilitator") {
+        //その名前が連想配列内にあるかどうか
+        if (facilitatorResult.has(votedId)) {
+          facilitatorResult
+            .get(votedId)
+            .push(voteData[votersId][votedId]["vote_rank"]);
+        } else {
+          facilitatorResult.set(votedId, [
+            voteData[votersId][votedId]["vote_rank"]
+          ]);
+        }
+      }
+    }
   }
-  // console.log(fg, p);
-  // console.log("end getVoteData");
-  setInterval(draws, 1000);
-};
-//Timestampの取得
-function getTodayTimestamp() {
-  var date = new Date();
-  var today =
-    date.getTime() -
-    date.getMilliseconds() -
-    date.getSeconds() * 1000 -
-    date.getMinutes() * 1000 * 60 -
-    date.getHours() * 1000 * 60 * 60;
-  // console.log(today);
-  return today;
+  //プレゼンターとファシリテータのランクの変更およびソート
+  presentorResult = fixRankAndSort(presentorResult);
+  facilitatorResult = fixRankAndSort(facilitatorResult);
+  console.log(facilitatorResult);
+  //必要なものを追加する
+  table[0].push({ role: "annotation" });
+  //チャートを描画する
+  google.charts.setOnLoadCallback(drawChart(presentorResult, "chart_div"));
+  google.charts.setOnLoadCallback(drawChart(facilitatorResult, "chart_div2"));
 }
-//DBからデータを持ってくる
-function getDataFromDB(database, docPath) {
-  var docRef = db.doc(docPath);
-  docRef
-    .get()
-    .then(function(doc) {
-      if (doc.exists) {
-        var docData = doc.data();
-        //ここでランクの抽出と更新
-        //p.set(doc_data[key].voted_id, 0);
-        //fg.set(doc_data[key].voted_id, 0);
-        doc_data = doc.data();
-        // console.log(doc_data);
-        //fgの変数初期化
-        let fgNum = 0;
-        //pの変数初期化
-        let pNum = 0;
-        p.forEach((value,key) => {
-          console.log(key);
-          p.set(key, 0);
-        });
-        fg.forEach((value,key) => {
-          fg.set(key, 0);
-        })
-        Object.keys(doc_data).forEach(function(key) {
-          //rankの4-rankを追加する
-          // console.log("getDataFromDB_voted_id", doc_data[key].voted_id);
-          // console.log("getDataFromDB_vote_rank", doc_data[key].vote_rank);
-          if (p.has(doc_data[key].voted_id)) {
-            // console.log("getDataFramDB" + p.get(doc_data[key].voted_id));
-            pNum = p.get(doc_data[key].voted_id);
-            p.set(doc_data[key].voted_id, pNum + 4 - doc_data[key].vote_rank);
-            // console.log(p, fg);
-          } else if (fg.has(doc_data[key].voted_id)) {
-            // console.log("getDataFramDB" + doc_data[key].voted_id);
-            fgNum = fg.get(doc_data[key].voted_id);
-            // console.log(fgNum);
-            fg.set(doc_data[key].voted_id, fgNum + 4 - doc_data[key].vote_rank);
-            // console.log(p, fg);
-          }
-        });
-        return docData;
-      } else {
-        console.log("No such document!");
-        return "";
-      }
-    })
-    .catch(function(error) {
-      console.log("Error getting document:", error);
-      return "";
-    });
+//sumの計算
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+//ランクの変更およびソートする関数(すごく読みにくい)
+function fixRankAndSort(result) {
+  //Mapを返す
+  return new Map(
+    [...result.entries()]
+      .map(value => [value[0], value[1].map(val => result.size - val)])
+      .sort((key1, key2) => key1[1].reduce(reducer) - key2[1].reduce(reducer))
+  );
 }
 
-async function getVoteData(database, timestamp) {
-  // console.log("x");
-  let data = await getDataFromDB(database, "vote_data/" + timestamp.toString());
-  // console.log(data);
-  return data;
+//グラフを描く関数
+function drawChart(result, locate) {
+  //tableをコピーする配列
+  let table_dev = [[]];
+  //tableのコピー
+  table_dev[0] = table[0];
+  //投票者の数
+  const vorters_number = table[0].length - 2;
+  //自分に投票できないためその部分に0を挿入する
+  result.forEach((value, key) => {
+    let value_len = value.length;
+    if (value_len != vorters_number) {
+      value.splice(table[0].indexOf(key) - 1, 0, 0);
+    }
+    //色の指定をするための空文字列
+    value.push("");
+    //keyとvalueを連結してテーブルに入れる
+    table.push([key].concat(value));
+  });
+  //tableの最初の要素の名前を空白にする
+  table[0] = [table[0][0]]
+    .concat(Array(table[0].length - 2))
+    .fill("")
+    .concat([table[0][table[0].length - 1]]);
+
+  const data = google.visualization.arrayToDataTable(table);
+
+  const options = {
+    title: locate == "chart_div" ? "Presentor" : "Facilitator",
+    titleTextStyle: { fontName: "Meiryo UI", fontSize: 30 },
+    width: 600,
+    height: 400,
+    legend: { position: "top", maxLines: 3 },
+    bar: { groupWidth: "75%" },
+    hAxis: {
+      ticks: [...Array(Math.pow(result.size, 2) + 5).keys()]
+    },
+    isStacked: true
+  };
+  // Instantiate and draw our chart, passing in some options.
+  const chart = new google.visualization.BarChart(
+    document.getElementById(locate)
+  );
+  google.visualization.events.addListener(chart, "ready", function() {
+    locate.innerHTML = '<img src="' + chart.getImageURI() + '">';
+  });
+  chart.draw(data, options);
+  table = table_dev;
 }
 
-async function getPairData(database, docPath) {
-  let docRef = db.doc(docPath);
-
-  await docRef
-    .get()
-    .then(function(doc) {
-      if (doc.exists) {
-        //fgとpでデータを分ける
-        const docData = doc.data();
-        Object.keys(docData).forEach(key => {
-          //undefinedでない場合
-          if (docData[key].P != undefined && docData[key].FG != undefined) {
-            fg.set(docData[key].FG, 0);
-            p.set(docData[key].P, 0);
-          }
-        });
-        return docData;
-      } else {
-        console.log("No such document!");
-        return "";
-      }
-    })
-    .catch(function(error) {
-      console.log("Error getting document:", error);
-      return "";
-    });
-}
-
-let doc_data = {};
-//更新時の更新を行うonSnapshot
+//snapshotで受け取り
 db.collection("vote_data")
-  .doc(timestamp.toString())
+  .doc(getTodayTimestamp().toString())
   .onSnapshot(doc => {
-    doc_data = doc.data();
-    // console.log(doc_data);
-    //fgの変数初期化
-    let fgNum = 0;
-    //pの変数初期化
-    let pNum = 0;
-    p.forEach((value,key) => {
-      console.log(key);
-      p.set(key, 0);
-    });
-    fg.forEach((value,key) => {
-      fg.set(key, 0);
-    })
-    Object.keys(doc_data).forEach(key => {
-      //rankの4-rankを追加する
-      // console.log("onSnapshot_voted_id", doc_data[key].voted_id);
-      // console.log("onSnapshot_vote_rank", doc_data[key].vote_rank);
-      if (p.has(doc_data[key].voted_id)) {
-        // console.log("onSnapshot" + doc_data[key].voted_id);
-        pNum = p.get(doc_data[key].voted_id);
-        p.set(
-          doc_data[key].voted_id,
-          p.get(doc_data[key].voted_id) + 4 - doc_data[key].vote_rank
-        );
-        // console.log(p, fg);
-      } else if (fg.has(doc_data[key].voted_id)) {
-        // console.log("onSnapshot" + doc_data[key].voted_id);
-        fgNum = fg.get(doc_data[key].voted_id);
-        // console.log(fgNum);
-        fg.set(
-          doc_data[key].voted_id,
-          fg.get(doc_data[key].voted_id) + 4 - doc_data[key].vote_rank
-        );
-        // console.log(p, fg);
-      }
-      //console.log(p, fg);
-    });
-    // console.log(p, fg);
+    drawAllChart(doc.data());
   });

@@ -1,16 +1,9 @@
 /*投票結果画面のcssファイル*/
-
-body{
-  margin:0;
-  padding;0;
-}
-.image{
-  text-align:center;
-}
-#canvas_wrapper{
-  display:none;
-}
-
 h1{
   text-align: center;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
 }

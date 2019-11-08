@@ -176,3 +176,8 @@ div.column {
 label, input[type='checkbox'] {
     cursor: pointer;
 }
+
+div.check {
+  color: "red";
+  font-size; 5px;
+}

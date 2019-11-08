@@ -265,6 +265,24 @@ function flag_check(){
 setInterval(flag_check,1000);
 */
 
+
+const dictMap2 = new Map();
+[
+    ["Ghita", ["ghita", "Ghita","ギータ","ぎーた"]],
+    ["Koyama", ["koyama", "Koyama", "小山", "こやま"]],
+    ["Mochida", ["mochida", "Mochida", "持田", "もちだ"]],
+    ["Yao", ["yao", "Yao", "you","You","姚", "よう"]],
+    ["Kase", ["kase", "Kase", "加瀬", "かせ"]],
+    ["Seki", ["seki", "Seki", "関", "せき"]],
+    ["Zhang", ["zhang","Zhang","chou", "Chou", "張", "ちょう"]],
+    ["Ogino", ["ogino", "Ogino", "荻野", "おぎの"]],
+    ["Ikeda", ["ikeda", "Ikeda", "池田", "いけだ"]],
+    ["Maemoto", ["maemoto", "Maemoto", "前本", "まえもと"]],
+    ["Sakamoto", ["sakamoto", "Sakamoto", "坂元", "さかもと"]],
+  ].forEach(row => {
+    row[1].forEach(name => dictMap2.set(name, row[0]))
+  });
+
 // 投票ボタンを押した時の処理
 async function btn_send(){  
   
@@ -322,8 +340,8 @@ async function btn_send(){
     for(let i = 0; i < p_num; i++){
       if(p_form_value[i] != "") {
         var p_voteData = {
-          votersId: selfID,
-          votedId: p_form_value[i],
+          votersId: dictMap2.get(selfID),
+          votedId: dictMap2.get(p_form_value[i]),
           voteRank: i+1,
           role: "Presentor",
         };
@@ -333,8 +351,8 @@ async function btn_send(){
     for(let i = 0; i < fg_num; i++){
       if(fg_form_value[i] != ""){
         var fg_voteData = {
-          votersId: selfID,
-          votedId: fg_form_value[i],
+          votersId: dictMap2.get(selfID),
+          votedId: dictMap2.get(fg_form_value[i]),
           voteRank: i+1,
           role: "Facilitator",
         };
@@ -344,12 +362,14 @@ async function btn_send(){
 
     //投票結果画面へ遷移
     var move = function(){
-      window.location.href = "result2.html"
+      window.location.href = "result.html"
     } 
     setTimeout(move, 1200);
   }else{
-    alert('自分の名前や間違った名前、同じ名前を複数個入力している可能性があります。');
-  };
+    const checks = document.getElementsByClassName('check');
+    checks[0].innerHTML = "自分の名前や間違った名前、同じ名前を複数個入力している可能性があります。";
+    //alert('自分の名前や間違った名前、同じ名前を複数個入力している可能性があります。');
+  }
 }
 
 

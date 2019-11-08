@@ -1,6 +1,6 @@
 async function showParticipant(databaseObj){
   var todaysPerticipants = await getTodaysParticipants(databaseObj);
-  console.log("test",todaysPerticipants);
+  //console.log("test",todaysPerticipants);
   var date = new Date();
   var nowTimestamp = date.getTime();
   var message1;
@@ -9,13 +9,13 @@ async function showParticipant(databaseObj){
     var elapsedTime = (nowTimestamp - todaysPerticipants[key] )/1000;
     //console.log('経過時間:',elapsedTime);
     if (elapsedTime < 20){
-      message1 = "ただ今 オンライン";
+      message1 = "<font color='blue'>ただ今</font> オンライン";
     } else if (20 <= elapsedTime && elapsedTime < 60) {
-      message1 = parseInt(elapsedTime).toString()+"秒 前オンライン";
+      message1 = "<font color='red'>"+parseInt(elapsedTime).toString()+"秒</font> 前オンライン";
     } else if (60 <= elapsedTime && elapsedTime < 60*60) {
-      message1 = parseInt(elapsedTime/60).toString()+"分 前オンライン";
+      message1 = "<font color='red'>"+parseInt(elapsedTime/60).toString()+"分</font> 前オンライン";
     } else if (60*60 <= elapsedTime && elapsedTime < 60*60*24) {
-      message1 = parseInt(elapsedTime/60/60).toString() +"時間 前オンライン";
+      message1 = "<font color='red'>"+parseInt(elapsedTime/60/60).toString() +"時間</font> 前オンライン";
     }
     status += key+" さんは " + message1 + "<br>"
   }

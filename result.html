@@ -1,37 +1,26 @@
-<!DOCTYPE html>
-<!--投票結果画面-->
-
 <html>
-  <meta charset="utf-8" />
-  <title>投票結果</title>
-  <link rel="stylesheet" href="result.css" />
-  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   <head>
+    <link rel="stylesheet" href="result.css" />
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
-    <script src="/read_firebase.js"></script>
+    <script type="text/javascript" src="/read_firebase.js"></script>
+    <script type="text/javascript" src="/utils_lib.js"></script>
+    <!--Load the AJAX API-->
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript" src="/result.js"></script>
   </head>
+
   <body>
-    
-
-
-    <h1>投票結果</h1>
-    <form id="form">
-      被投票者
-      <input type="text" id="name" />
-      <br />
-      投票者
-      <input type="text" id="value" />
-      <button type="button" id="sbmt">送信</button>
-    </form>
-    <div class="image"><img id="newImg" /></div>
-    <div id="canvas_wrapper">
-      <canvas id="myCanvas" width="740" height="300"
-        >canvasに対応していません</canvas
-      >
+    <h1>結果だよ</h1>
+    <!--Div that will hold the pie chart-->
+    <div class="container">
+      <div id="chart_div"></div>
+      <div id="chart_div2"></div>
     </div>
-    <script src="result.js"></script>
   </body>
 </html>
